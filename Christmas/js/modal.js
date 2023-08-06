@@ -4,6 +4,7 @@ const modalClose = document.querySelector('.modal__close');
 const btnsOrder = document.querySelectorAll('.product__button_order');
 const headerConsultation = document.querySelector('.header__consultation')
 const order = overlayOrder.querySelector('.modal__order')
+const modalTitle = modal.querySelector('.modal__title')
 
 // for (let i = 0; i < btnsOrder.length; i++) {
 //   btnsOrder[i].addEventListener('click', () => {
@@ -17,16 +18,16 @@ const order = overlayOrder.querySelector('.modal__order')
 // })
 
 headerConsultation.addEventListener('click', () => {
-  const modalTitle = modal.querySelector('.modal__title')
   modalTitle.textContent = 'Оставьте заявку на консультацию и мы вам перезвоним в течении 10 минут'
   overlayOrder.classList.add('overlay_active')
 })
 
 btnsOrder.forEach(btn => {
   btn.addEventListener('click', () => {
+    modalTitle.textContent = 'Оформить заказ'
     overlayOrder.classList.add('overlay_active')
     order.value = btn.dataset.order
-    modalTitle.textContent = 'Оформить заказ'
+
   })
 })
 
