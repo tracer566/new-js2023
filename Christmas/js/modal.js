@@ -26,6 +26,7 @@ btnsOrder.forEach(btn => {
   btn.addEventListener('click', () => {
     overlayOrder.classList.add('overlay_active')
     order.value = btn.dataset.order
+    modalTitle.textContent = 'Оформить заказ'
   })
 })
 
