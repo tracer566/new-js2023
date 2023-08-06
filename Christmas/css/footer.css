@@ -1,0 +1,155 @@
+.footer {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 4fr 5fr 3fr;
+  gap: 60px 30px
+}
+
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: flex-start;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.96px;
+}
+
+/* .footer__item {} */
+
+.footer__link {
+  transition: color 0.3s ease-in-out;
+}
+
+.footer__link:hover {
+  color: var(--second-bg-color)
+}
+
+.footer__list-social {
+  display: flex;
+  align-items: center;
+}
+
+.footer__item-social:not(:last-child) {
+  margin-right: 20px;
+}
+
+/* .footer__link {} */
+
+.footer__link-social {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.footer__info-list,
+.footer__team,
+.footer__rules-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.footer__item {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: 0.72px;
+}
+
+@media(max-width:1200px) {
+  .footer {
+    padding-top: 57px;
+    padding-bottom: 57px;
+    font-size: 16px;
+  }
+
+  .footer__container {
+    display: grid;
+    /* grid-template-columns: 4fr 4fr 4fr; */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 53px 30px
+  }
+
+  .footer__contacts {
+    font-size: 20px;
+  }
+
+  .footer__link-social {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media(max-width:1000px) {
+  .footer {
+    padding-top: 57px;
+    padding-bottom: 57px;
+    font-size: 14px;
+  }
+
+  .footer__container {
+    grid-template-columns: 4fr 5fr 4fr;
+    gap: 40px 24px
+  }
+
+  .footer__contacts {
+    font-size: 16px;
+  }
+
+  .footer__link-social {
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media(max-width:760px) {
+  .footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px
+  }
+
+  .footer__logo,
+  .footer__list-social {
+    order: -1
+  }
+}
+
+@media(max-width:580px) {
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 12px;
+  }
+
+  .footer__container {
+    grid-template-columns: 1fr;
+    gap: 30px
+  }
+
+  .footer__contacts {
+    font-size: 14px;
+    order: -1
+  }
+
+  .footer__rules-list {
+    order: -1
+  }
+}

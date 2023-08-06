@@ -1,0 +1,25 @@
+.logo {
+  width: 164px;
+  height: 76px;
+  color: var(--one-color);
+}
+
+.logo__second {
+  width: 164px;
+  height: 76px;
+  color: var(--main-color);
+}
+
+@media(max-width:1200px) {
+  .logo {
+    width: 115px;
+    height: 55px;
+  }
+}
+
+@media(max-width:580px) {
+  .logo {
+    width: 73px;
+    height: 35px;
+  }
+}
