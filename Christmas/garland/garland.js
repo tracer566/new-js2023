@@ -17,7 +17,7 @@ html::after {
   inset: 0;
   background-position: 0 0;
   background-repeat: no-repeat;
-  background-image: url('../images/elka.png');
+  background-image: url('images/elka.png');
   background-size: 150px 150px;
   pointer-events: none;
   z-index: 1000;
@@ -29,7 +29,7 @@ html::after {
   right: 0;
   left: 0;
   height: 36px;
-  background-image: url('../images/christmas.png');
+  background-image: url('images/christmas.png');
   pointer-events: none;
   z-index: 999;
 }
