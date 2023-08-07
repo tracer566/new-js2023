@@ -1,6 +1,6 @@
 .header {
   color: var(--second-color);
-  padding: 27px 0;
+  padding: 47px 0 27px;
 }
 
 .header__container {
@@ -59,7 +59,7 @@ button.header__consultation:focus {
 
 @media(max-width:1000px) {
   .header {
-    padding: 20px 0;
+    padding: 47px 0 27px;
   }
 
   .header__burger {
@@ -102,7 +102,7 @@ button.header__consultation:focus {
 
 @media(max-width:580px) {
   .header {
-    padding-top: 16px;
+    padding-top: 36px;
     padding-bottom: 20px;
   }
 
@@ -115,4 +115,3 @@ button.header__consultation:focus {
     font-size: 12px;
   }
 }
-

@@ -1,26 +1,28 @@
 const createGarland = () => {
   const garland = document.createElement('div');
-garland.classList.add('garland','garland_1')
-document.body.append(garland)
+  garland.classList.add('garland', 'garland_1')
+  const header = document.querySelector('.header');
+  header.prepend(garland)
 
-const style = document.createElement('style')
+  const style = document.createElement('style')
 
-style.textContent = ` 
+  style.textContent = ` 
 
-html {
+header {
   position: relative;
 }
 
-html::after {
+header::after {
   position: absolute;
   content: '';
   inset: 0;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: url('images/elka.png');
-  background-size: 150px 150px;
+  background-size: 130px 130px;
   pointer-events: none;
   z-index: 1000;
+  top: 0;
 }
 
 .garland {
@@ -51,62 +53,62 @@ html::after {
 }
 
 @media(max-width:1440px) {
-  html::after {
+  header::after {
     background-size: 120px 120px;
 
   }
 }
 
 @media(max-width:1200px) {
-  html::after {
+  header::after {
     background-size: 100px 100px;
 
   }
 }
 
 @media(max-width:1000px) {
-  html::after {
+  header::after {
     background-size: 80px 80px;
   }
 }
 
 @media(max-width:760px) {
-  html::after {
+  header::after {
     background-size: 70px 70px;
   }
 }
 `
 
-document.head.append(style)
+  document.head.append(style)
 
 
-let order = 1;
+  let order = 1;
 
-setInterval(() => {
-  switch (order) {
-    case 1:
-      garland.classList.add('garland_2');
-      garland.classList.remove('garland_1');
-      order = 2;
-      break;
-    case 2:
-      garland.classList.add('garland_3');
-      garland.classList.remove('garland_2');
-      order = 3;
-      break;
-    case 3:
-      garland.classList.add('garland_4');
-      garland.classList.remove('garland_3');
-      order = 4;
-      break;
-    case 4:
-      garland.classList.add('garland_1');
-      garland.classList.remove('garland_4');
-      order = 1;
-      break;
+  setInterval(() => {
+    switch (order) {
+      case 1:
+        garland.classList.add('garland_2');
+        garland.classList.remove('garland_1');
+        order = 2;
+        break;
+      case 2:
+        garland.classList.add('garland_3');
+        garland.classList.remove('garland_2');
+        order = 3;
+        break;
+      case 3:
+        garland.classList.add('garland_4');
+        garland.classList.remove('garland_3');
+        order = 4;
+        break;
+      case 4:
+        garland.classList.add('garland_1');
+        garland.classList.remove('garland_4');
+        order = 1;
+        break;
 
-  }
-}, 1500)
+    }
+  }, 1500)
 };
 
 createGarland()
