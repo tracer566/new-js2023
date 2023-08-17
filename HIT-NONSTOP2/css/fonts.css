@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'SF UI Display';
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+  src: url("../fonts/SFUIDisplay-Light.woff2") format("woff2"),
+    url("../fonts/SFUIDisplay-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  src: url("../fonts/SFUIDisplay-Regular.woff2") format("woff2"),
+    url("../fonts/SFUIDisplay-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+  src: url("../fonts/SFUIDisplay-Semibold.woff2") format("woff2"),
+    url("../fonts/SFUIDisplay-Semibold.woff") format("woff");
+}
+
+/* open-sans-regular - cyrillic */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/open-sans-v35-cyrillic-regular.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('../fonts/open-sans-v35-cyrillic-regular.woff') format('woff');
+  /* Legacy iOS */
+}
+
+/* open-sans-700 - cyrillic */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/open-sans-v35-cyrillic-700.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('../fonts/open-sans-v35-cyrillic-700.woff') format('woff');
+  /* Legacy iOS */
+}

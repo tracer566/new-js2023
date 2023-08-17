@@ -1,0 +1,102 @@
+.track {
+  /* background-color: #fff; */
+  border: 2px solid transparent;
+  padding: 6px;
+  /*решает проблему при переполнении карточки*/
+  display: flex;
+  /*решает проблему при переполнении карточки*/
+  flex-direction: column;
+  border-radius:20px;
+
+}
+
+.track_active {
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.50);
+  transition-property: background-color;
+}
+
+.track__img-wrap {
+  /* margin-bottom: 14px; */
+  border-radius: 12px 12px 0px 0px;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+}
+
+.track__img-wrap::after {
+  content: '';
+  display: block;
+  background-image: url('../icons/play.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.80);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(0deg);
+  /* transform: translateX(-50%); */
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+
+}
+
+.track:hover .track__img-wrap::after,
+.track:focus .track__img-wrap::after {
+  transform: translate(-50%, -50%) rotateY(0);
+  opacity: 1;
+}
+
+.track:active .track__img-wrap::after {
+  transform: translate(-50%, -50%) rotateY(0deg) scale(1.3);
+}
+
+.track_active:hover {
+  transition: background-color .3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.80);
+}
+
+.track_active .track__img-wrap::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotateY(0);
+  background-image: url('../icons/pause.svg');
+  transition-property: background-color;
+}
+
+.track_active:hover .track__img-wrap::after {
+  background-color: #fff;
+}
+
+.track__info {
+  background-color: #fff;
+  color: #000;
+  padding: 14px 8px;
+  border-radius: 0px 0px 12px 12px;
+  /*не дает тексту за блок вываливаться*/
+  word-wrap: break-word;
+  /*решает проблему при переполнении карточки*/
+  flex-grow: 1;
+  /*решает проблему при переполнении карточки*/
+  width: 100%;
+
+}
+
+@media(max-width: 380px){
+.track {
+  padding: 3px;
+  border: 1px solid transparent;
+  border-radius:14px;
+}
+
+
+.track__info {
+  padding: 8px;
+
+}
+
+}

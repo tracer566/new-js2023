@@ -1,0 +1,66 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+ .logo__img {
+  width:60px;
+  height:60px
+ } 
+
+.logo__text {
+  font-family: 'Open Sans', 'SF UI Display', sans-serif;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+}
+
+.logo__title {
+  text-transform: uppercase;
+  font-size: 27px;
+}
+
+.logo__subtitle {
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+
+@media(max-width:1200px) {
+  .logo__title {
+  font-size: 20px;
+}
+
+.logo__subtitle {
+  font-size: 9px;
+}
+
+ .logo__img {
+  width:55px;
+  height:55px
+ } 
+
+
+}
+
+
+@media(max-width:768px) {
+    .logo__title {
+  font-size: 18px;
+}
+
+.logo__subtitle {
+  font-size: 9px;
+}
+
+ .logo__img {
+  width:45px;
+  height:45px
+ } 
+
+
+}
+
+@media(max-width:320px) {}

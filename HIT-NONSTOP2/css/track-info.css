@@ -1,0 +1,28 @@
+.track-info {
+  text-align: left;
+}
+
+.track-info__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+
+}
+
+.track-info__artist {
+  font-size: 14px;
+  font-weight: 300;
+
+}
+
+@media(max-width: 380px){
+.track-info__title {
+  font-size: 14px;
+}
+
+.track-info__artist {
+  font-size: 12px;
+}
+
+
+}
