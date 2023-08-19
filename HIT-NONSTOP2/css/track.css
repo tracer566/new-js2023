@@ -6,7 +6,7 @@
   display: flex;
   /*решает проблему при переполнении карточки*/
   flex-direction: column;
-  border-radius:20px;
+  border-radius: 20px;
 
 }
 
@@ -68,6 +68,11 @@
   transition-property: background-color;
 }
 
+.track_pause .track__img-wrap::after {
+  background-image: url('../icons/play.svg');
+}
+
+
 .track_active:hover .track__img-wrap::after {
   background-color: #fff;
 }
@@ -86,17 +91,17 @@
 
 }
 
-@media(max-width: 380px){
-.track {
-  padding: 3px;
-  border: 1px solid transparent;
-  border-radius:14px;
-}
+@media(max-width: 380px) {
+  .track {
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+  }
 
 
-.track__info {
-  padding: 8px;
+  .track__info {
+    padding: 8px;
 
-}
+  }
 
 }
