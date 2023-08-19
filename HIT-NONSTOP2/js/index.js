@@ -16,7 +16,7 @@ const dataMusic = [
   {
     id: '3',
     artist: 'Bullet For My Valentine',
-    track: 'Save your tears',
+    track: 'Tears Dont Fall 2',
     poster: 'images/photo-333.jpg',
     mp3: 'audio/Bullet_For_My_Valentine-Tears_Dont_Fall_Part_2.mp3',
   },
@@ -138,7 +138,6 @@ catalogAddBtn.innerHTML = `
 </svg>
 
 `
-
 
 const playMusic = event => {
   event.preventDefault();
