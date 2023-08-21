@@ -396,7 +396,7 @@ const init = () => {
   })
 
   headerLogo.addEventListener('click', () => {
-    renderCatalog(playList)
+    renderCatalog(dataMusic)
     checkCount()
     // console.log('data: ', data);
   })
