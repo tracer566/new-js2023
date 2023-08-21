@@ -112,20 +112,28 @@ const dataMusic = [
     mp3: 'audio/Madonna - Frozen.mp3',
   },
 ];
+
+let playList = []
+
+const favoriteList = localStorage.getItem('favorite') ? JSON.parse(localStorage.getItem('favorite')) : []
 const audio = new Audio(); //создал новый объект(позырить свойства в прототипе и разобраться шо там)
 
 const pauseBtn = document.querySelector('.player__controller-pause');
 const trackCards = document.getElementsByClassName('track');//динамическая коллекция
 const player = document.querySelector('.player');
+const headerLogo = document.querySelector('.header__logo');
 
 const stopBtn = document.querySelector('.player__controller-stop');
 const prevBtn = document.querySelector('.player__controller-prev');
 const nextBtn = document.querySelector('.player__controller-next');
 const likeBtn = document.querySelector('.player__controller-like');
+const FavoriteBtn = document.querySelector('.header__favorite-btn');
+
 const muteBtn = document.querySelector('.player__controller-mute');
 const playerProgressInput = document.querySelector('.player__progress-input');
 const playerTimePassed = document.querySelector('.player__time-passed');
 const playerTimeTotal = document.querySelector('.player__time-total');
+let playerVolumeInput = document.querySelector('.player__volume-input');
 
 const catalogContainer = document.querySelector('.catalog__container');
 
@@ -162,27 +170,47 @@ const playMusic = event => {
   let i = 0;
   const id = trackActive.dataset.idTrack;
 
+  const index = favoriteList.indexOf(id)
+  if (index !== -1) {
+    likeBtn.classList.add('player__icon_like_active')
+  } else {
+    likeBtn.classList.remove('player__icon_like_active')
+  }
+
+  localStorage.setItem('favorite', JSON.stringify(favoriteList))
+
   const track = dataMusic.find((item, index) => {
     i = index;
     return id === item.id;
   })
 
+  console.log('track', track)
+
   audio.src = track.mp3;
-  audio.loop = true;
+  // повторяет текущий трэк
+  // audio.loop = true; 
   audio.play();
 
   const prevTrack = i === 0 ? dataMusic.length - 1 : i - 1;
   const nextTrack = i + 1 === dataMusic.length ? 0 : i + 1;
   prevBtn.dataset.idTrack = dataMusic[prevTrack].id;
   nextBtn.dataset.idTrack = dataMusic[nextTrack].id;
+  likeBtn.dataset.idTrack = id;
 
   player.classList.add('player_active');
 
   for (let i = 0; i < trackCards.length; i++) {
     if (id === trackCards[i].dataset.idTrack) {
       trackCards[i].classList.add('track_active');
+      pauseBtn.innerHTML = `
+   <svg>
+      <use xlink:href="icons/sprite.svg#pause-player"></use>
+    </svg>
+  `
+
     } else {
       trackCards[i].classList.remove('track_active');
+
     }
 
   };
@@ -192,14 +220,6 @@ const playMusic = event => {
 
 };
 
-// const nextprevTrack = () => {
-//   let i = 0;
-//   const prevTrack = i === 0 ? dataMusic.length - 1 : i - 1;
-//   const nextTrack = i + 1 === dataMusic.length ? 0 : i + 1;
-//   prevBtn.dataset.idTrack = dataMusic[prevTrack].id;
-//   nextBtn.dataset.idTrack = dataMusic[nextTrack].id;
-//   playMusic()
-// }
 
 const pausePlayer = () => {
   const trackActive = document.querySelector('.track_active');
@@ -247,9 +267,11 @@ stopBtn.addEventListener('click', () => {
       <use xlink:href="icons/sprite.svg#pause-player"></use>
     </svg>
   `
-  for (let i = 0; i < trackCards.length; i++) {
-    trackCards[i].classList.remove('track_active');
-  };
+  // for (let i = 0; i < trackCards.length; i++) {
+  //   trackCards[i].classList.remove('track_active');
+  // };
+
+  document.querySelector('.track_active').classList.remove('track_active')
 
 });
 
@@ -279,23 +301,6 @@ const createCard = (data) => {
 
 };
 
-// перебор объекта с треками и передача колбэка в createCard,затем вставка готовых карточек
-const renderCatalog = (dataList) => {
-  catalogContainer.textContent = '';
-
-  // map перебирает каждый объект в массиве и возвращает,новый массив с любыми даннными
-  const listCards = dataList.map(createCard);
-  // 1-й вариант
-  // listCards.forEach(card => {
-  //   catalogContainer.append(card)
-  // })
-
-  // spread оператор распаковывает массив
-  catalogContainer.append(...listCards);
-
-  addHandlerTrack();
-};
-
 const checkCount = (i = 1) => {
 
   // console.log(catalogContainer.clientHeight);
@@ -310,6 +315,24 @@ const checkCount = (i = 1) => {
 
 
 
+};
+
+// перебор объекта с треками и передача колбэка в createCard,затем вставка готовых карточек
+const renderCatalog = (dataList) => {
+  playList = [...dataList];
+  catalogContainer.textContent = '';
+
+  // map перебирает каждый объект в массиве и возвращает,новый массив с любыми даннными
+  const listCards = dataList.map(createCard);
+  // 1-й вариант
+  // listCards.forEach(card => {
+  //   catalogContainer.append(card)
+  // })
+
+  // spread оператор распаковывает массив
+  catalogContainer.append(...listCards);
+
+  addHandlerTrack();
 };
 
 // время
@@ -335,6 +358,9 @@ const updateTime = () => {
 
 // начало
 const init = () => {
+  audio.volume = localStorage.getItem('volume') || 1;
+  playerVolumeInput.value = audio.volume * 100;
+
   renderCatalog(dataMusic);
   checkCount();
 
@@ -348,6 +374,12 @@ const init = () => {
 
   prevBtn.addEventListener('click', playMusic);
   nextBtn.addEventListener('click', playMusic);
+
+  // включает следующий трэк
+  audio.addEventListener('ended', () => {
+    nextBtn.dispatchEvent(new Event('click', { bubbles: true }))
+  })
+
   audio.addEventListener('timeupdate', updateTime);
   playerProgressInput.addEventListener('change', () => {
     const progress = playerProgressInput.value;
@@ -355,8 +387,55 @@ const init = () => {
 
   });
 
+  FavoriteBtn.addEventListener('click', () => {
+    const data = dataMusic.filter((item) => favoriteList.includes(item.id))
+    renderCatalog(data)
+    checkCount()
+    // console.log('data: ', data);
+  })
+
+  headerLogo.addEventListener('click', () => {
+    renderCatalog(dataMusic)
+    checkCount()
+    // console.log('data: ', data);
+  })
+
+  likeBtn.addEventListener('click', () => {
+    const index = favoriteList.indexOf(likeBtn.dataset.idTrack)
+    if (index === -1) {
+      favoriteList.push(likeBtn.dataset.idTrack)
+      likeBtn.classList.add('player__icon_like_active')
+    } else {
+      favoriteList.splice(index, 1)
+      likeBtn.classList.remove('player__icon_like_active')
+    }
+
+    localStorage.setItem('favorite', JSON.stringify(favoriteList))
+  })
+
+  playerVolumeInput.addEventListener('input', () => {
+    const value = playerVolumeInput.value;
+    audio.volume = value / 100;
+    localStorage.setItem('volume', audio.volume)
+  })
+
+  muteBtn.addEventListener('click', () => {
+    if (audio.volume) {
+      localStorage.setItem('volume', audio.volume)
+      audio.volume = 0;
+      muteBtn.classList.add('player__icon_mute-off')
+      muteBtn.classList.remove('player__icon_mute-on')
+      playerVolumeInput.value = 0
+    } else {
+      audio.volume = localStorage.getItem('volume')
+      muteBtn.classList.add('player__icon_mute-on')
+      muteBtn.classList.remove('player__icon_mute-off')
+      playerVolumeInput.value = audio.volume * 100
+
+    }
+  })
+
 }
 
-console.log(...trackCards);
 
 init()
