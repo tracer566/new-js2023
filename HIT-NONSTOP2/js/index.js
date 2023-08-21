@@ -153,12 +153,6 @@ const playMusic = event => {
   console.dir(audio);
   const trackActive = event.currentTarget;
 
-  // фвв
-  let title = player.querySelector('.track-info__title');
-  let artist = player.querySelector('.track-info__artist');
-  title.textContent = dataMusic[trackActive.dataset.idTrack - 1].track;
-  artist.textContent = dataMusic[trackActive.dataset.idTrack - 1].artist;
-  // фвв
 
   if (trackActive.classList.contains('track_active')) {
     pausePlayer();
@@ -179,22 +173,29 @@ const playMusic = event => {
 
   localStorage.setItem('favorite', JSON.stringify(favoriteList))
 
-  const track = dataMusic.find((item, index) => {
+  const track = playList.find((item, index) => {
     i = index;
     return id === item.id;
   })
 
   console.log('track', track)
 
+  // фвв
+  let title = player.querySelector('.track-info__title');
+  let artist = player.querySelector('.track-info__artist');
+  title.textContent = track.track;
+  artist.textContent = track.artist;
+  // фвв
+
   audio.src = track.mp3;
   // повторяет текущий трэк
   // audio.loop = true; 
   audio.play();
 
-  const prevTrack = i === 0 ? dataMusic.length - 1 : i - 1;
-  const nextTrack = i + 1 === dataMusic.length ? 0 : i + 1;
-  prevBtn.dataset.idTrack = dataMusic[prevTrack].id;
-  nextBtn.dataset.idTrack = dataMusic[nextTrack].id;
+  const prevTrack = i === 0 ? playList.length - 1 : i - 1;
+  const nextTrack = i + 1 === playList.length ? 0 : i + 1;
+  prevBtn.dataset.idTrack = playList[prevTrack].id;
+  nextBtn.dataset.idTrack = playList[nextTrack].id;
   likeBtn.dataset.idTrack = id;
 
   player.classList.add('player_active');
@@ -395,7 +396,7 @@ const init = () => {
   })
 
   headerLogo.addEventListener('click', () => {
-    renderCatalog(dataMusic)
+    renderCatalog(playList)
     checkCount()
     // console.log('data: ', data);
   })
