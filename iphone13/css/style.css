@@ -624,6 +624,12 @@ fieldset {
   }
 }
 
+.offer__btn{
+  display: block;
+  margin:0 auto;
+  width: max-content;
+  max-width: 280px
+}
 /* select:-moz-focusring,
 a:-moz-focusring {
   color: transparent;
