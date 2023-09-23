@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "fonts.css";
 @import "normalize.css";
 @import "variables.css";
@@ -5,4 +6,13 @@
 @import "header.css";
 @import "film-week.css";
 @import "other-films.css";
+=======
+@import "fonts.css";
+@import "normalize.css";
+@import "variables.css";
+@import "basic.css";
+@import "header.css";
+@import "film-week.css";
+@import "other-films.css";
+>>>>>>> 326ebd3967666f049547fad76c147112b44bf27e
 @import "footer.css";

@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 :root{
 	--bg-color: #171717;
 	--primary-color:#D3AC3F;
 	--second-color:#2B2B2B;
 	--text-color:#ffffff;
+=======
+:root{
+	--bg-color: #171717;
+	--primary-color:#D3AC3F;
+	--second-color:#2B2B2B;
+	--text-color:#ffffff;
+>>>>>>> 326ebd3967666f049547fad76c147112b44bf27e
 }
