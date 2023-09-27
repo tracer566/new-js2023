@@ -76,6 +76,11 @@
 
 }
 
+.other-films__item:nth-child(even){
+  position: relative;
+  top:51px;
+}
+
 @media(max-width:1280px) {
   .film-week__title {
     margin-right: auto;
@@ -153,6 +158,11 @@
   .film-week {
     margin-bottom: 50px;
   }
+
+  .other-films__item:nth-child(even){
+  position: static;
+  top:auto;
+}
 }
 
 

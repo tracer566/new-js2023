@@ -29,7 +29,7 @@
   flex-wrap: wrap;
   gap: 40px 30px;
   justify-content: space-between;
-  margin-bottom: 160px;
+  margin-bottom: 190px;
 }
 
 .other-films__item {
@@ -40,6 +40,18 @@
 .other-films__image {
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px #D3AC3F;
+  transition-property: box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.other-films__link:hover .other-films__image{
+box-shadow: 0px 0px 10px 10px var(--primary-color);
+}
+
+.other-films__link:focus .other-films__image,
+.other-films__link:active .other-films__image{
+box-shadow: 0px 0px 20px 5px var(--primary-color);
 }
 
 .other-films__btn {
@@ -55,7 +67,24 @@
   line-height: normal;
   display: block;
   margin: 0 auto;
+   transition-property: box-shadow,background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  border:2px solid var(--primary-color);
 }
+
+
+.other-films__btn:hover {
+ box-shadow: 0px 0px 10px 10px var(--second-color);
+}
+
+.other-films__btn:active,.other-films__btn:focus {
+ box-shadow: 0px 0px 10px 10px var(--second-color);
+ background-color: transparent;
+ color:var(--text-color);
+
+}
+
 
 @media(max-width:1366px) {
   .other-films__title {

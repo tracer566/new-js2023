@@ -74,6 +74,22 @@
   margin-bottom: 10px;
 }
 
+.subnav__item{
+  transition: color .2s;
+}
+
+.subnav__item:hover{
+  color:var(--primary-color);
+}
+
+.subnav__item:active{
+  color:var(--primary-color);
+}
+
+.subnav__item:focus{
+  color:var(--primary-color);
+}
+
 .regulation__age {
   margin-bottom: 20px;
   height: 45px;
@@ -84,9 +100,12 @@
   font-weight: 400;
   line-height: 140%;
   opacity: 0.6;
+  max-width: 270px;
 }
 
-/* .partners {} */
+ .partners {
+  max-width: 270px;
+ } 
 
 .partners__me {
   margin-bottom: 20px;

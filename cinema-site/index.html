@@ -4,16 +4,24 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Silver Cinema - онлайн кинотеатр</title>
-
+<link rel="icon" type="image/x-icon" href="check2.ico">
 <!-- <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/slick-theme.css"> -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
 <link rel="stylesheet" href="css/style.css">
 
 
 
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+
   <!-- <script defer src="js/jquery-2.2.4.min.js"></script> -->
   <!-- <script defer src="js/slick.min.js"></script> -->
-  <!-- <script defer src="js/script.js"></script> -->
+  <script defer src="js/script.js"></script>
 
 </head>
 
@@ -29,7 +37,7 @@
 	 </form>
 	 <!-- /.header__search -->
 
-	 <button class="header__burger-btn" aria-label="Открыть меню">
+	 <button class="header__burger-btn js-burger-btn" aria-label="Открыть меню">
 	 	<svg class="header__burger-svg" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M4.94403 9.8959H34.6564" stroke-width="2.475" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M28.0537 19.8H4.94403" stroke-width="2.475" stroke-linecap="round" stroke-linejoin="round"/>
@@ -76,7 +84,7 @@
   <p class="film-week__tagline">За пределами страха ждёт судьба</p>
  
   <button class="film-week__watch-btn">Смотреть фильм</button>
-  <a href="#" class="film-week__watch-trailer" aria-label="Смотреть трейлер">
+  <a href="https://youtu.be/Q6nepw3fskg" data-fancybox class="film-week__watch-trailer" aria-label="Смотреть трейлер">
   </a>
 
 
@@ -94,56 +102,56 @@
 
 <ul class="other-films__list">
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/whv6KtrXIc0" class="other-films__link" data-fancybox>
 			<img src="images/shangchi.jpg" alt="Постер фильма Шанг Чи" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
 	</li>
 	<!-- /.other-films__item -->
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/9FpufEP1jeI" class="other-films__link" data-fancybox>
 			<img src="images/freeguy.jpg" alt="Постер фильма Свободный парень" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
 	</li>
 	<!-- /.other-films__item -->
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/zeKFmhPKgDs" class="other-films__link" data-fancybox>
 			<img src="images/addamsfamily.jpg" alt="Постер фильма Семейка Аддамс" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
 	</li>
 	<!-- /.other-films__item -->
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/Z3b1GbPg2VM" class="other-films__link" data-fancybox>
 			<img src="images/notimetodie.jpg" alt="Постер фильма Не время умирать" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
 	</li>
 	<!-- /.other-films__item -->
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/8qB8EGNOtr8" class="other-films__link" data-fancybox>
 			<img src="images/matrix.jpg" alt="Постер фильма Матрица 4" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
 	</li>
 	<!-- /.other-films__item -->
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/hlANal2_tsc" class="other-films__link" data-fancybox>
 			<img src="images/spiderman.jpg" alt="Постер фильма Человек Паук" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
 	</li>
 	<!-- /.other-films__item -->
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/cnn8xghmxZA" class="other-films__link" data-fancybox>
 			<img src="images/infinite.jpg" alt="Постер фильма Бесконечность" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
 	</li>
 	<!-- /.other-films__item -->
 	<li class="other-films__item">
-		<a href="#" class="other-films__link">
+		<a href="https://youtu.be/_oboseJViww" class="other-films__link" data-fancybox>
 			<img src="images/eternals.jpg" alt="Постер фильма Вечные" class="other-films__image">
 		</a>
 		<!-- /.other-films__link -->
@@ -219,5 +227,33 @@
 	<!-- /.footer -->
 
 
+	<!-- мобильное меню -->
+<nav class="navigation js-navigation">
+	<ul class="navigation__list">
+<li class="navigation__item"><a href="#">Публичная оферта</a></li>
+<!-- /.subnav__item -->
+<li class="navigation__item"><a href="#">Партнерам</a></li>
+<!-- /.subnav__item -->
+<li class="navigation__item"><a href="#">FAQ</a></li>
+<!-- /.subnav__item -->
+<li class="navigation__item"><a href="#">Приложения</a></li>
+<!-- /.subnav__item -->
+<li class="navigation__item"><a href="#">Карта сайта</a></li>
+<!-- /.subnav__item -->
+
+	</ul>
+	<!-- /.navigation__list -->
+
+	<button class="navigation__close js-navigation-close">
+<svg width="30" height="30" class="navigation__close-cross" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<g><path fill="currentColor" d="M5.3,18.7C5.5,18.9,5.7,19,6,19s0.5-0.1,0.7-0.3l5.3-5.3l5.3,5.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3   c0.4-0.4,0.4-1,0-1.4L13.4,12l5.3-5.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0L12,10.6L6.7,5.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4   l5.3,5.3l-5.3,5.3C4.9,17.7,4.9,18.3,5.3,18.7z"/>
+	</g></svg>
+</button>
+<!-- /.navigation__close -->
+</nav>
+<!-- /.navigation -->
+
+
 	
 </body>
+</html>

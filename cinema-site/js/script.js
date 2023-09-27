@@ -1,12 +1,16 @@
-<<<<<<< HEAD
-$(document).ready(function () {
-  $('.slider').slick({
-    dots: true,
-  })
-=======
-$(document).ready(function () {
-  $('.slider').slick({
-    dots: true,
-  })
->>>>>>> 326ebd3967666f049547fad76c147112b44bf27e
+const burgerBtn = document.querySelector(".js-burger-btn");
+const navigation = document.querySelector(".js-navigation");
+const navigationList = document.querySelector(".navigation__list");
+const navigationClose = document.querySelector(".js-navigation-close");
+
+burgerBtn.addEventListener('click',() => {
+	navigation.style.right = "0"
 })
+
+navigationClose.addEventListener('click',() => {
+	navigation.style.right = ""
+})
+
+Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
