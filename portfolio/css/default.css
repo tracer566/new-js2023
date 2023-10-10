@@ -10,7 +10,13 @@ html{
 
 
 body{
-font-size: inherit;
+font-family: Open Sans,Helvetica,sans-serif;
+font-size: 16px;
+min-width: 320px;
+min-height: 100vh;
+font-weight: 500;
+color:#110303;
+background-color: #fff;
 }
 
 h1,h2,h3,h4,p{
@@ -31,6 +37,8 @@ a{
 button{
 	cursor: pointer;
 	border:none;
+	padding: 0;
+	background-color: transparent;
 }
 
 img{
@@ -38,3 +46,7 @@ img{
 	height: auto;
 }
 
+/*убрать курсив по умолчанию*/
+address{
+	font-style: normal;
+}
