@@ -1,5 +1,6 @@
 @import "normalize.css";
-@import "default.css";
 @import "fonts.css";
+@import "default.css";
 @import "header.css";
-
+@import "contacts.css";
+@import "present.css";

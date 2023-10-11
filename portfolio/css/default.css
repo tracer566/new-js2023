@@ -1,52 +1,71 @@
-html{
-	box-sizing:border-box;
+html {
+  box-sizing: border-box;
 }
 
 *,
 *::before,
-*::after{
-	box-sizing:inherit;
+*::after {
+  box-sizing: inherit;
 }
 
 
-body{
-font-family: Open Sans,Helvetica,sans-serif;
-font-size: 16px;
-min-width: 320px;
-min-height: 100vh;
-font-weight: 500;
-color:#110303;
-background-color: #fff;
+body {
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-size: 14px;
+  min-width: 320px;
+  min-height: 100vh;
+  font-weight: 500;
+  color: #110303;
+  background-color: #fff;
 }
 
-h1,h2,h3,h4,p{
-	margin: 0;
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
 }
 
-ul{
-	list-style: none;
-	padding: 0;
-	margin: 0;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-a{
-	text-decoration: none;
-	color:inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-button{
-	cursor: pointer;
-	border:none;
-	padding: 0;
-	background-color: transparent;
+button {
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
 }
 
-img{
-	max-width: 100%;
-	height: auto;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /*убрать курсив по умолчанию*/
-address{
-	font-style: normal;
+address {
+  font-style: normal;
+}
+
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 30px 0;
+}
+
+@media(min-width:768px) {
+  .container {
+    padding: 0 40px;
+  }
 }
