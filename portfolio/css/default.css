@@ -58,6 +58,7 @@ address {
 .container {
   padding: 0 15px;
   margin: 0 auto;
+  max-width: 1110px;
 }
 
 section {
@@ -67,5 +68,32 @@ section {
 @media(min-width:768px) {
   .container {
     padding: 0 40px;
+  }
+}
+
+@media(min-width:992px) {
+  .page__header {
+    left: 0;
+    top: 0;
+    height: 100%;
+    position: fixed;
+  }
+}
+
+/* #A1B7C8 */
+@media(min-width:1440px) {
+  .page {
+    background-image: linear-gradient(to right, #A1B7C8 24%, transparent 25%)
+  }
+
+  .page__header {
+    left: calc(50% - 720px);
+    top: 0;
+  }
+}
+
+@media(min-width:2780px) {
+  .page {
+    background-image: linear-gradient(to right, #A1B7C8 30%, transparent 30%)
   }
 }

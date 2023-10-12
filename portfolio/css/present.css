@@ -7,6 +7,7 @@
 .present__photo {
   width: 100%;
   max-width: 320px;
+  object-fit: cover;
   margin-bottom: 20px;
 }
 
@@ -23,6 +24,9 @@
   font-weight: 700;
   line-height: 120%;
   text-transform: uppercase;
+}
+
+.present__group-title {
   margin-bottom: 18px;
 }
 
@@ -83,6 +87,9 @@
 
   .present__subtitle {
     font-size: 18px;
+  }
+
+  .present__group-title {
     margin-bottom: 40px;
   }
 
