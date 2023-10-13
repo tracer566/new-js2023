@@ -1,6 +1,6 @@
-.portfolio {}
+/* .portfolio__list {} */
 
-.container {}
+/* .portfolio__item {} */
 
 .portfolio__title {
   font-size: 30px;
@@ -11,42 +11,41 @@
   margin-bottom: 40px;
 }
 
-.portfolio__slider {
+.card {
+  box-sizing: border-box;
   max-width: 252px;
-  width: 100%;
-  padding: 14px 23px;
-  text-align: center;
+  margin: 0 auto;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
 }
 
-.portfolio__list {}
-
-.portfolio__item {}
-
-.card {}
-
-.card__picture {}
+.card__picture {
+  align-self: center;
+  width: 155px;
+  height: 92px;
+  background-image: url("../images/macbook.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 2px 15px 13px;
+  margin-bottom: 30px;
+}
 
 .card__data {
-  /* display: flex;
-  flex-wrap: wrap;
+  display: flex;
   justify-content: space-between;
-  gap: 26px 20px */
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 26px;
 }
 
 .card__client {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 120%;
-  margin-bottom: 26px;
-  display: inline-block;
 
 }
 
 .card__date {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 140%;
 }
 
@@ -55,4 +54,37 @@
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
+}
+
+.portfolio__slider {
+  position: relative;
+  max-width: 290px;
+  margin: 0 auto;
+
+}
+
+.portfolio__arrow {
+  display: block;
+  width: 26px;
+  height: 26px;
+  /* background-color: green; */
+  background-image: url("../images/arrow-left-slider.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  /* margin-top: -13px; */
+}
+
+.portfolio__arrow_left {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.portfolio__arrow_right {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+
 }
