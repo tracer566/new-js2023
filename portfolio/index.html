@@ -9,7 +9,7 @@
 <link rel="preload" href="fonts/open-sans-v36-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/open-sans-v36-cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/index.css">
 
 <!-- <style>
 .present{
@@ -17,7 +17,9 @@ background: linear-gradient(to right,aqua 50%,transparent 50%)
 
 </style> -->
 
-<script defer src="js/script.js"></script>
+
+<script defer src="js/swiper-bundle.min.js"></script>
+<script defer src="js/index.js"></script>
 
 </head>
 <body class="page">
@@ -142,9 +144,9 @@ Email
 <div class="container">
 <h2 class="portfolio__title">Портфолио</h2>
 <!-- /.portfolio__title -->
-<div class="portfolio__slider">
-<ul class="portfolio__list">
-<li class="portfolio__item">
+<div class="portfolio__slider swiper">
+<ul class="portfolio__list swiper-wrapper">
+<li class="portfolio__item swiper-slide">
 <article class="card">
 <img src="images/cinema.jpg" alt="Сайт киноафиш" class="card__picture">
 
@@ -161,7 +163,7 @@ Email
 <!-- /.card -->
 </li>
 <!-- /.portfolio__item -->
-<li class="portfolio__item" hidden>
+<li class="portfolio__item swiper-slide">
 <article class="card">
 <img src="images/iphone13.jpg" alt="Сайт iphone 13" class="card__picture">
 
@@ -178,7 +180,7 @@ Email
 <!-- /.card -->
 </li>
 <!-- /.portfolio__item -->
-<li class="portfolio__item" hidden>
+<li class="portfolio__item swiper-slide">
 <article class="card">
 <img src="images/gogame.jpg" alt="Сайт мини игры go" class="card__picture">
 
@@ -195,7 +197,7 @@ Email
 <!-- /.card -->
 </li>
 <!-- /.portfolio__item -->
-<li class="portfolio__item" hidden>
+<li class="portfolio__item swiper-slide">
 <article class="card">
 <img src="images/friendly_house.jpg" alt="Лэндинг продажи домов" class="card__picture">
 
@@ -212,7 +214,39 @@ Email
 <!-- /.card -->
 </li>
 <!-- /.portfolio__item -->
-<li class="portfolio__item" hidden>
+<li class="portfolio__item swiper-slide">
+<article class="card">
+<img src="images/dom.jpg" alt="Многостраничник" class="card__picture">
+<p class="card__data">
+<span class="card__client">Клиент: ItalGroup boutique</span>
+<!-- /.card__client -->
+<time class="card__date" datetime="2023">год: 2023</time>
+<!-- /.card__date -->
+</p>
+<!-- /.card__data -->
+<h3 class="card__title">Многостраничный сайт</h3>
+<!-- /.card__title -->
+</article>
+<!-- /.card -->
+</li>
+<!-- /.portfolio__item -->
+<li class="portfolio__item swiper-slide">
+<article class="card">
+<img src="images/dom.jpg" alt="Многостраничник" class="card__picture">
+<p class="card__data">
+<span class="card__client">Клиент: ItalGroup boutique</span>
+<!-- /.card__client -->
+<time class="card__date" datetime="2023">год: 2023</time>
+<!-- /.card__date -->
+</p>
+<!-- /.card__data -->
+<h3 class="card__title">Многостраничный сайт</h3>
+<!-- /.card__title -->
+</article>
+<!-- /.card -->
+</li>
+<!-- /.portfolio__item -->
+<li class="portfolio__item swiper-slide">
 <article class="card">
 <img src="images/dom.jpg" alt="Многостраничник" class="card__picture">
 <p class="card__data">
