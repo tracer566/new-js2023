@@ -106,6 +106,10 @@ section {
     left: calc(50% - 720px);
     top: 0;
   }
+
+  .container {
+    padding: 0 30px 0 250px;
+  }
 }
 
 @media(min-width:2780px) {
