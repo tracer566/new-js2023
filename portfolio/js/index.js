@@ -32,3 +32,8 @@ const swiper = new Swiper(".swiper", {
     }
   }
 })
+
+$(document).ready(function () {
+  $('.card:odd').css('background-color', '#b1eccb')
+  $('.card:even').css('border-bottom', '1px solid rgba(0,0,0,0.2)')
+})
