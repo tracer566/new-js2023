@@ -9,10 +9,12 @@
 // page__overlay_modal
 // modal__close
 
+// бургер
 $('.header__contacts-burger').click(function () {
   $('.header__contacts').slideToggle()
 })
 
+// модалка
 $('.present__order-btn').click(function () {
   // $('.page__overlay').removeClass('page__overlay_modal')
   $('.page__overlay_modal').fadeIn(400).css('display', 'flex')
@@ -23,6 +25,18 @@ $('.modal__close').click(function () {
   $('.page__overlay_modal').fadeOut(400)
 })
 
+// делегирование
+$('.page__overlay').click((event) => {
+  // if (event.target.classList.contains('page__overlay')) {
+  //   $('.page__overlay_modal').fadeOut(400)
+  // }
+
+  if ($(event.target).hasClass('page__overlay')) {
+    $('.page__overlay_modal').fadeOut(400)
+  }
+})
+
+// слайдер
 const swiper = new Swiper(".swiper", {
   // активирует стрелки
   navigation: {
