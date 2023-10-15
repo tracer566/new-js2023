@@ -1,8 +1,26 @@
-const burger = document.querySelector('.header__contacts-burger');
-const contacts = document.querySelector('.contacts');
+// const burger = document.querySelector('.header__contacts-burger');
+// const contacts = document.querySelector('.header__contacts');
 
-burger.addEventListener('click', () => {
-  contacts.classList.toggle('open')
+// burger.addEventListener('click', () => {
+//   contacts.classList.toggle('open')
+// })
+
+// page__overlay
+// page__overlay_modal
+// modal__close
+
+$('.header__contacts-burger').click(function () {
+  $('.header__contacts').slideToggle()
+})
+
+$('.present__order-btn').click(function () {
+  // $('.page__overlay').removeClass('page__overlay_modal')
+  $('.page__overlay_modal').fadeIn(400).css('display', 'flex')
+})
+
+$('.modal__close').click(function () {
+  // $('.page__overlay').addClass('page__overlay_modal')
+  $('.page__overlay_modal').fadeOut(400)
 })
 
 const swiper = new Swiper(".swiper", {
@@ -35,5 +53,5 @@ const swiper = new Swiper(".swiper", {
 
 $(document).ready(function () {
   $('.card:odd').css('background-color', '#b1eccb')
-  $('.card:even').css('border-bottom', '1px solid rgba(0,0,0,0.2)')
+  // $('.card:even').css('border-bottom', '1px solid rgba(0,0,0,0.2)')
 })
