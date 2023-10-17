@@ -1,0 +1,28 @@
+.present{
+	padding-top: 25px;
+}
+.present__hero{
+margin-bottom: 30px;
+}
+.present__title{
+font-family: IBM Plex Mono;
+font-size: 90px;
+font-style: normal;
+font-weight: 500;
+margin-bottom: 6px;
+}
+.present__tagline{
+font-style: normal;
+font-weight: 400;
+line-height: 130%; 
+margin-bottom: 54px;
+
+}
+.present__btn{
+	display: block;
+	width: 285px;
+height: 68px;
+filter:drop-shadow(-4px 6px 10px rgba(10, 10, 10, 0.51));
+border-radius: 2px;
+background: transparent url('../images/big-btn.png') center center /cover no-repeat 
+}

@@ -1,0 +1,28 @@
+.header{
+padding-top: 20px;
+padding-bottom: 20px;
+margin-bottom: 17px;
+}
+
+.header__container{
+display: grid;
+grid-template-columns: repeat(3,1fr);
+align-items: center;
+}
+
+.header__logo{
+	/*выравнивает по горизонтали*/
+justify-self:start; 
+ /*выравнивает по вертикали*/
+/*align-self: center; */
+
+}
+.header__announcmet{
+	justify-self:center;
+	/*align-self: center;  */
+}
+.header__navigation{
+	justify-self:end;
+	/*align-self: center;  */
+}
+

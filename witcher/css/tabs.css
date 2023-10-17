@@ -1,0 +1,37 @@
+.tabs__control{
+display: flex;
+max-width: 285px;
+padding: 13px 22px;
+background: rgba(0, 0, 0, 0.70);
+column-gap:38px;
+margin-left: auto;
+margin-bottom: 12px;
+justify-content: space-between;
+
+}
+
+.tabs__btn{
+color: #FFF;
+font-family: Arial,sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 1;
+border-bottom:2px solid transparent;
+transition: border .3s ease-out;
+
+	} 
+
+.tabs__btn_active{
+	border-bottom:2px solid #fff;
+}
+
+.tabs__content{
+display: flex;
+justify-content: space-between;
+gap:30px;
+}
+
+.tabs__item{
+margin-bottom: 20px;
+}
