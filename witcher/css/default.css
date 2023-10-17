@@ -19,7 +19,7 @@ body {
   color: #fff;
   font-size: 20px;
   background-image: linear-gradient(182deg, rgba(0, 0, 0, 0.00) 49.38%, rgba(0, 0, 0, 0.42) 98.49%), url("../images/bg-main.jpg");
-  /*padding-bottom: 92px;*/
+  padding-bottom: 92px;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -67,8 +67,42 @@ iframe {
 
 
 .container {
-  max-width: 1140px;
+  max-width: 1170px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 30px;
+}
+
+@media(min-height: 850px){
+body.page{
+  display: flex;
+  flex-direction: column;
+}
+}
+
+@media(max-width: 1000px){
+  body{
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 850px){
+.container {
+  max-width: 1186px;
+  padding: 0 38px;
+}
+
+}
+
+@media(max-width: 480px){
+body{
+  font-size: 12px;
+}
+
+.container {
+  max-width: 1140px;
   padding: 0 15px;
 }
+
+}
+

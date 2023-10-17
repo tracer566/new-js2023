@@ -16,6 +16,7 @@ font-style: normal;
 font-weight: 400;
 line-height: 130%; 
 margin-bottom: 54px;
+max-width: 350px;
 
 }
 .present__btn{
@@ -24,5 +25,29 @@ margin-bottom: 54px;
 height: 68px;
 filter:drop-shadow(-4px 6px 10px rgba(10, 10, 10, 0.51));
 border-radius: 2px;
-background: transparent url('../images/big-btn.png') center center /cover no-repeat 
+background: transparent url('../images/big-btn.png') center center /cover no-repeat;
+transition:filter,background, .2s ease-out
+}
+
+.present__btn:hover{
+background: transparent url('../images/big-btn-hover.png') center center /cover no-repeat;
+/*2-ой способ*/
+/*filter:drop-shadow(-4px 6px 10px rgba(10, 10, 10, 0.51)) brightness(1.2);*/
+}
+
+@media(min-height: 850px){
+.present{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1
+}
+
+.present__container{
+	flex-grow: 1;
+	width: 100%;
+	justify-content: space-between;
+	 display: flex;
+  flex-direction: column;
+  max-height: 1300px;
+}
 }

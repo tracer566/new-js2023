@@ -15,10 +15,13 @@
 <meta name="theme-color" content="#ffffff">
 
 <link rel="preload" href="fonts/ibm-plex-mono-latin_cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" as="image" href="images/big-btn-hover.png" type="image/png">
 <link rel="stylesheet" href="css/main.css">
+
+<script src="js/index.js" type="module"></script>
 </head>
 
-<body>
+<body class="page">
 <header class="header">
 <div class="container header__container">
 <img class="header__logo" src="images/logo.svg" width="93" height="85" alt="Логотип сериала Ведьмак">
@@ -39,8 +42,13 @@
 <a class="navigation__link navigation__link_kinopoisk" target="_blank" href="https://www.kinopoisk.ru/" aria-label="Портал о кино kinopoisk"></a>
 </li>
 <!-- /.navigation__item -->
+
 </ul>
 <!-- /.navigation__list -->
+<button class="navigation__btn burger">
+  меню
+</button>
+<!-- /.navigation__btn -->
 </nav>
 <!-- /.header__navigation navigation -->
 </div>
@@ -49,7 +57,7 @@
 <!-- /.header -->
 
 <section class="present">
-<div class="container">
+<div class="container present__container">
 <div class="present__hero">
 <h1 class="present__title">
 Ведьмак
@@ -111,7 +119,7 @@
     <!-- /.tabs__content -->
   </li>
   <!-- /.tabs__item -->
-  <li class="tabs__item">
+  <li class="tabs__item" hidden>
      <ul class="tabs__content">
       <li class="card card_img">
         <img class="card__photo-img" src="images/geralt.jpg" alt="">
@@ -129,7 +137,7 @@
     <!-- /.tabs__content -->
   </li>
   <!-- /.tabs__item -->
-  <li class="tabs__item">
+  <li class="tabs__item" hidden>
      <ul class="tabs__content">
       <li class="card card_product">
         <article class="product">
