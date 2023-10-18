@@ -73,36 +73,35 @@ iframe {
   padding: 0 30px;
 }
 
-@media(min-height: 850px){
-body.page{
-  display: flex;
-  flex-direction: column;
-}
+@media(min-height: 850px) {
+  body.page {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-@media(max-width: 1000px){
-  body{
+@media(max-width: 1000px) {
+  body {
     font-size: 16px;
   }
 }
 
-@media(max-width: 850px){
-.container {
-  max-width: 1186px;
-  padding: 0 38px;
-}
+@media(max-width: 850px) {
+  .container {
+    max-width: 1186px;
+    padding: 0 38px;
+  }
 
 }
 
-@media(max-width: 480px){
-body{
-  font-size: 12px;
-}
+@media(max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
 
-.container {
-  max-width: 1140px;
-  padding: 0 15px;
-}
+  .container {
+    max-width: 1140px;
+    padding: 0 15px;
+  }
 
 }
-

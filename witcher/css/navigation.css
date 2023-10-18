@@ -1,54 +1,83 @@
-
-.navigation__list{
-display: flex;
-column-gap:25px;
+.navigation__list {
+  display: flex;
+  column-gap: 25px;
 }
 
-.navigation__link{
-background-repeat: no-repeat;
-background-position: center;
-width: 40px;
-height: 40px;
-display: block;
-border:1px solid transparent;
-background-color: rgba(255, 255, 255, 0.70);
-border-radius: 50%;
-transition: box-shadow,border-color, 0.3s ease-in;
-outline: 0;/*отключить стандартную обводку при фокусе*/
-box-shadow: 0px 1px 5px transparent;
+.navigation__link {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  display: block;
+  border: 1px solid transparent;
+  background-color: rgba(255, 255, 255, 0.70);
+  border-radius: 50%;
+  transition: box-shadow, border-color, 0.3s ease-in;
+  outline: 0;
+  /*отключить стандартную обводку при фокусе*/
+  box-shadow: 0px 1px 5px transparent;
 }
 
-.navigation__link:focus{
-border-color:#5B5B5B;
-/*border-color:red;*/
+.navigation__link:focus {
+  border-color: #5B5B5B;
+  /*border-color:red;*/
 
 }
-.navigation__link:hover,.navigation__link:active{
-/*filter: drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.70));*/
-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.70);
+
+.navigation__link:hover,
+.navigation__link:active {
+  /*filter: drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.70));*/
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.70);
 }
 
-.navigation__link_netflix{
-	background-image: url("../images/netflix.svg")
-}
-.navigation__link_okko{
-	background-image: url("../images/okko.svg")
-}
-.navigation__link_kinopoisk{
-	background-image: url("../images/kinopoisk.svg")
+.navigation__link_netflix {
+  background-image: url("../images/netflix.svg")
 }
 
-.navigation__btn{
-	display: none;
+.navigation__link_okko {
+  background-image: url("../images/okko.svg")
 }
 
-@media(max-width: 750px){
-.navigation__btn{
-	display: block;
+.navigation__link_kinopoisk {
+  background-image: url("../images/kinopoisk.svg")
 }
 
-.navigation__list{
-	display: none;
-}
+@media(max-width: 750px) {
+  .navigation {
+    /* grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 4; */
+    position: relative;
+  }
+
+  .navigation__list {
+    display: none;
+  }
+
+  .navigation__list_active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 35px;
+    right: 0;
+  }
+
+  .navigation__link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navigation__link_netflix {
+    background-image: url("../images/netflix-mob.svg")
+  }
+
+  .navigation__link_okko {
+    background-image: url("../images/okko-mob.svg")
+  }
+
+  .navigation__link_kinopoisk {
+    background-image: url("../images/kinopoisk-mob.svg")
+  }
 
 }
