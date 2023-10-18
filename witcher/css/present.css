@@ -39,6 +39,7 @@
   /*filter:drop-shadow(-4px 6px 10px rgba(10, 10, 10, 0.51)) brightness(1.2);*/
 }
 
+
 @media(min-height: 850px) {
   .present {
     display: flex;
@@ -81,6 +82,7 @@
   .present__hero {
     margin-bottom: 10px;
   }
+
 }
 
 @media(max-width:850px) {
@@ -146,7 +148,16 @@
   .present__btn {
     display: block;
     width: 100%;
-    max-width: 290px;
+    max-width: 380px;
+    height: 63px;
+  }
+}
+
+@media(max-width: 340px) {
+  .present__btn {
+    display: block;
+    width: 100%;
+    max-width: 320px;
     height: 63px;
   }
 }

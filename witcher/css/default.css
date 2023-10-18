@@ -74,6 +74,26 @@ iframe {
   padding: 0 30px;
 }
 
+.page {
+  position: relative;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  right: 76px;
+  bottom: 0;
+  height: calc(100% - 115px);
+  width: 100%;
+  background-image: url("../images/geralt-bg.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  /* background-size: 50% 85%; */
+  background-size: contain;
+  z-index: -1;
+
+}
+
 @media(min-height: 850px) {
   body.page {
     display: flex;
@@ -85,6 +105,10 @@ iframe {
   body {
     font-size: 16px;
   }
+
+  .page::before {
+    right: 0;
+  }
 }
 
 @media(max-width: 850px) {
@@ -92,11 +116,31 @@ iframe {
     max-width: 1186px;
     padding: 0 38px;
   }
+
+  .page::before {
+    right: 0;
+    bottom: 0;
+    height: calc(100% - 120px);
+    width: calc(100% - 44vw);
+    background-position: right top;
+    /* background-size: 50% 85%; */
+    background-size: contain;
+  }
 }
 
 @media(max-width: 650px) {
   .container {
     padding: 0 25px;
+  }
+
+  .page::before {
+    top: 110px;
+    bottom: auto;
+    /* height: calc(100% - 120px); */
+    width: calc(100% - 25vw);
+    background-position: right top;
+    /* background-size: 50% 85%; */
+    background-size: contain;
   }
 }
 
@@ -110,4 +154,40 @@ iframe {
     padding: 0 15px;
   }
 
+  .page::before {
+    top: 60px;
+    bottom: auto;
+    right: 0px;
+    height: 390px;
+    width: 390px;
+    background-position: right top;
+    /* background-size: 50% 85%; */
+    background-size: contain;
+  }
+}
+
+@media(max-width: 380px) {
+  .page::before {
+    top: 60px;
+    bottom: auto;
+    right: 0px;
+    height: 310px;
+    width: 310px;
+    background-position: right top;
+    /* background-size: 50% 85%; */
+    background-size: contain;
+  }
+}
+
+@media(max-width:340px) {
+  .page::before {
+    top: 54px;
+    bottom: auto;
+    height: 258px;
+    width: 258px;
+    right: 0px;
+    background-position: right top;
+    /* background-size: 50% 85%; */
+    background-size: contain;
+  }
 }
