@@ -103,6 +103,7 @@ iframe {
   body.page {
     display: flex;
     flex-direction: column;
+    background-size: cover;
   }
 }
 
@@ -130,6 +131,8 @@ iframe {
     z-index: -1;
 
   }
+
+
 }
 
 @media(max-width: 850px) {
