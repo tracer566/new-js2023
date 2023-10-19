@@ -26,6 +26,7 @@
   border-bottom: 2px solid #fff;
 }
 
+/*убирает баг с прыганьем картинки при переключении табов*/
 .tabs__list {
   min-height: 250px;
 }
@@ -112,13 +113,13 @@
 
 }
 
-/* @media(max-width:600px) {
-  .tabs__content {
-    max-height: 1030px;
+/*убирает баг с прыганьем картинки при переключении табов*/
+ @media(max-width:600px) {
+  .tabs__list  {
+    min-height: 1030px;
     height: 100%;
   }
-
-} */
+} 
 
 @media(max-width:480px) {
   .tabs__control {
@@ -143,5 +144,10 @@
 
   .tabs__content_product {
     gap: 30px;
+  }
+
+ .tabs__list  {
+    min-height: 1100px;
+    height: 100%;
   }
 }
