@@ -1,7 +1,8 @@
 const burgerMenu = (param) => {
+  // создаются константы из объекта param,который в index.js передал,названия в скобках {}
   const {
-    selectorBurger = ".burger",
-    activeBurger = "burger_active",
+    selectorBurger = ".burger",//по умолчанию
+    activeBurger = "burger_active",//по умолчанию
     selectorMenu,
     openMenuSelector } = param
 
@@ -14,6 +15,6 @@ const burgerMenu = (param) => {
   })
 
 
-}
+};
 
 export default burgerMenu;
