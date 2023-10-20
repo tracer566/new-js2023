@@ -21,6 +21,15 @@ tabs({
 
 renderTabs()
 
+// запуск fancybox
+Fancybox.bind("[data-fancybox='gallery']", {
+  // closeButton: false
+
+});
+Fancybox.bind("[data-fancybox]", {
+
+});
+
 // деструктуризация
 // const men = {
 //   name: 'Джек',

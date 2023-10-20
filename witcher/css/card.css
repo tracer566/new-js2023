@@ -6,7 +6,8 @@
 }
 
 .card__link {
-  line-height: 1.3
+  line-height: 1.3;
+  cursor: pointer;
 }
 
 .card__video-img {
@@ -27,6 +28,7 @@
   width: 100%;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 
 .card_product {

@@ -10,7 +10,7 @@ const getCard = function (dataCard) {
     case 'video':
       li.classList.add("card_video")
       li.innerHTML =
-        `<a class="card__link" target="_blank" href="${dataCard.link}">
+        `<a class="card__link" data-fancybox href="${dataCard.link}">
   <figure>
   <img class="card__video-img" src="${dataCard.preview}" alt="${dataCard.description}">
   <figcaption>${dataCard.description}</figcaption>
@@ -20,7 +20,7 @@ const getCard = function (dataCard) {
 
     case 'photo':
       li.classList.add("card_img")
-      li.innerHTML = `<img class="card__photo-img" src="${dataCard.link}" alt="${dataCard.description}">`;
+      li.innerHTML = `<img class="card__photo-img" data-fancybox="gallery" src="${dataCard.link}" alt="${dataCard.description}">`;
       break
 
     case 'goods':
