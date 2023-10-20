@@ -114,12 +114,12 @@
 }
 
 /*убирает баг с прыганьем картинки при переключении табов*/
- @media(max-width:600px) {
-  .tabs__list  {
+@media(max-width:600px) {
+  .tabs__list {
     min-height: 1030px;
     height: 100%;
   }
-} 
+}
 
 @media(max-width:480px) {
   .tabs__control {
@@ -146,8 +146,8 @@
     gap: 30px;
   }
 
- .tabs__list  {
-    min-height: 1100px;
+  .tabs__list {
+    min-height: 1000px;
     height: 100%;
   }
 }

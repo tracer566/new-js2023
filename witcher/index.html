@@ -18,6 +18,7 @@
 <link rel="preload" as="image" href="images/big-btn-hover.png" type="image/png">
 <link rel="stylesheet" href="css/main.css">
 
+<!-- <script src="js/getData.js" type="module"></script> -->
 <script src="js/index.js" type="module"></script>
 </head>
 
@@ -90,7 +91,7 @@
 <!-- /.tabs__control -->
 <ul class="tabs__list">
 <li class="tabs__item tabs__item_active">
-<ul class="tabs__content tabs__content_video">
+<ul class="tabs__content tabs__content_video" data-base="video">
 <li class="card card_video">
 <a class="card__link" target="_blank" href="https://www.youtube.com/watch?v=eNVkT7NWyX8">
 <figure>
@@ -120,7 +121,7 @@
 </li>
 <!-- /.tabs__item -->
 <li class="tabs__item">
-<ul class="tabs__content tabs__content_picture">
+<ul class="tabs__content tabs__content_picture" data-base="photo">
 <li class="card card_img">
 <img class="card__photo-img" src="images/geralt.jpg" alt="">
 </li>
@@ -138,7 +139,7 @@
 </li>
 <!-- /.tabs__item -->
 <li class="tabs__item">
-<ul class="tabs__content tabs__content_product">
+<ul class="tabs__content tabs__content_product" data-base="goods">
 <li class="card card_product">
 <article class="product">
 <img class="product__photo" src="images/pendant.jpg" alt="">

@@ -1,6 +1,7 @@
 // импорт функции из файла
 import burgerMenu from "./burger.js";
 import tabs from "./tabs.js";
+import renderTabs from "./renderTabs.js";
 
 // вызов функции и передача объекта
 burgerMenu({
@@ -15,9 +16,10 @@ tabs({
   activeClassButton: 'tabs__btn_active',
   selectorTabsElement: '.tabs__item',
   activeClassTab: 'tabs__item_active',
-
+  callback: renderTabs,
 });
 
+renderTabs()
 
 // деструктуризация
 // const men = {

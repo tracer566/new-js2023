@@ -1,0 +1,17 @@
+[
+  {
+    "link": "https://www.youtube.com/watch?v=eNVkT7NWyX8",
+    "preview": "db/image/witcher.s02tr01.jpg",
+    "description": "Русский трейлер #1"
+  },
+  {
+    "link": "https://www.youtube.com/watch?v=MlpcwN_6rQs&t=16s",
+    "preview": "db/image/witcher.s02tr02.jpg",
+    "description": "Русский трейлер #2"
+  },
+  {
+    "link": "https://www.youtube.com/watch?v=1YG0XMvRdPE",
+    "preview": "db/image/witcher.s02tiz01.jpg",
+    "description": "Трейлер оригинальная озвучка"
+  }
+]
