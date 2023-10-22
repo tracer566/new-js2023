@@ -1,0 +1,89 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/nunito-v26-cyrillic-300.woff2') format('woff2'),
+    url('../fonts/nunito-v26-cyrillic-300.woff') format('woff');
+
+}
+
+/* nunito-600 - cyrillic */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/nunito-v26-cyrillic-600.woff2') format('woff2'),
+    url('../fonts/nunito-v26-cyrillic-600.woff') format('woff');
+
+}
+
+/* nunito-900 - cyrillic */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/nunito-v26-cyrillic-900.woff2') format('woff2'),
+    url('../fonts/nunito-v26-cyrillic-900.woff') format('woff');
+
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #fff;
+  color: #434343;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.header {
+  background-color: #000;
+  padding: 13px 0;
+}
+
+.header__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.header__title {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.main {
+  padding: 60px 30px;
+}
+
+.main__title {
+  text-align: center;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
