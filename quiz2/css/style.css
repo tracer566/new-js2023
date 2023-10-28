@@ -130,6 +130,21 @@ button {
   flex-direction: column;
   max-height: 100%;
   overflow-y: auto;
+  /* firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgb(36, 33, 33);
+}
+
+/* Chrome, Edge and Safari */
+.selection__list::-webkit-scrollbar {
+  width: 6px;
+  background-color: #aeaeae;
+}
+
+.selection__list::-webkit-scrollbar-thumb {
+  background-color: rgb(36, 33, 33);
+  border-radius: 8px;
+  height: 150px;
 }
 
 .selection__elem {
@@ -159,7 +174,9 @@ button {
 
 .selection__result {
   text-align: center;
-  max-width: 70px;
+  /* max-width: 70px; */
+  width: min-content;
+  /* width: max-content */
 }
 
 .selection__result-ratio {
@@ -177,19 +194,167 @@ button {
   line-height: 1.1;
 }
 
+/* 2-й блок */
 
-/* .main__box_question {
+.main__box_question {
   border-radius: 30px;
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.10);
-} */
+  padding: 60px 120px;
+  min-height: 540px;
+  height: auto;
+}
 
-/* .question {}
+.main__form-question {
+  position: relative;
+}
 
+.main__form-question::after {
+  content: attr(data-count);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #6bb37d;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
 
-.answer {}
+.answer {
+  display: block;
+  margin-bottom: 26px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 65px;
+  /* height: 40px; */
+}
 
-.answer__checkbox {}
+.answer:last-child {
+  margin-bottom: 34px;
+}
 
-.answer__text {}
+/* стили чекбоксов */
+.answer__checkbox {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  /* margin-right: 25px; */
+  margin: 0 0 0 -65px;
+}
 
-.question__next {} */
+.answer__checkbox::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+  /* margin-bottom: 26px; */
+
+}
+
+.answer__checkbox::after {
+  content: '';
+  height: 8px;
+  width: 17px;
+  /* 1 способ нарисовать галочку */
+  /* border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0); */
+  background-color: transparent;
+  display: block;
+  position: absolute;
+  top: 13px;
+  left: 12px;
+  transform: rotate(-45deg);
+  /* 2 способ нарисовать галочку */
+  border-style: solid;
+  border-color: #000;
+  border-width: 0 0 2px 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* появление галочки */
+.answer__checkbox:checked::after {
+  opacity: 1;
+}
+
+/* эффекты фокус и ховер */
+.answer__checkbox:focus::before,
+.answer__checkbox:hover::before {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.answer__text {
+  color: #434343;
+  line-height: 40px;
+}
+
+/* стили радио кнопок */
+/* стили чекбоксов */
+.answer__radio {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  /* margin-right: 25px; */
+  margin: 0 0 0 -65px;
+}
+
+/* круг снаружи */
+.answer__radio::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  transition: box-shadow 0.3s ease;
+  /* margin-bottom: 26px; */
+
+}
+
+/* шарик внутри */
+.answer__radio::after {
+  content: '';
+  height: 14px;
+  width: 14px;
+  background-color: rgb(0, 0, 0);
+  /* background-color: rgb(185, 219, 35); */
+  display: block;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* появление галочки */
+.answer__radio:checked::after {
+  opacity: 1;
+}
+
+/* эффекты фокус и ховер */
+.answer__radio:focus::before,
+.answer__radio:hover::before {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.answer__text {
+  color: #434343;
+  line-height: 40px;
+}
