@@ -30,6 +30,7 @@
 <main class="main">
 <h2 class="main__title">Выберите Quiz</h2>
 <div class="main__box selection">
+  <!-- создается в js -->
 <ul class="selection__list">
 <li class="selection__elem">
 <button class="selection__theme">Финансовая грамотность</button>
@@ -64,7 +65,8 @@
 </div>
 <!-- /.main__box.selection -->
 
-<div class="main__box main__box_question">
+  <!-- создается в js -->
+<div class="main__box main__box_question" style="display: none;">
 <form class="main__form-question" data-count="1/10">
   <fieldset>
     <legend class="main__subtitle">Какие типы input корректны?</legend>
@@ -91,7 +93,8 @@
 </div>
 <!-- /.main__box main__box_question-->
 
-<div class="main__box main__box_question">
+  <!-- создается в js -->
+<div class="main__box main__box_question" style="display: none;">
 <form class="main__form-question" data-count="2/10">
   <fieldset>
     <legend class="main__subtitle">Какая столица является родиной демократии?</legend>
@@ -117,7 +120,9 @@
 <!-- /.main__form-question -->
 </div>
 <!-- /.main__box main__box_question-->
-<div class="main__box main__box_result result">
+
+  <!-- создается в js -->
+<div class="main__box main__box_result result" style="display: none;">
   <h2 class="main__subtitle main__subtitle_result">Ваш результат</h2>
 <div class="result__box">
   <p class="result__ratio">10/10</p>
