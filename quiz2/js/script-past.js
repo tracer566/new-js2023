@@ -262,19 +262,10 @@ const renderQuiz = quiz => {
       });
 
       if (ok) {
-        // проверяет количество вопросов и запускает следующий
-        if (questionCount < quiz.list.length) {
-          showQuestion()
-        } else {
-          questionBox.innerHTML = '<h1>Вопросы кончились</h1>'
-        }
-
+        console.log('ответ', answer);
       } else {
-        // alert('Вы не выбрали ни одного ответа');
-        form.classList.add('main__form-question_error');
-        setTimeout(() => {
-          form.classList.remove('main__form-question_error');
-        }, 6000);
+        alert('Вы не выбрали ни одного ответа');
+        // console.error('Вы не выбрали ни одного ответа');
       };
     });
   }
