@@ -3,7 +3,7 @@
 const main = document.querySelector('.main');
 const selection = document.querySelector('.selection');
 const title = document.querySelector('.main__title');
-
+//  1 ая
 // функция в которой хранится база,1-ая вызовется
 const getData = () => {
   const dataBase = [
@@ -25,7 +25,7 @@ const getData = () => {
         {
           type: 'radio',
           question: 'Вопрос2?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
+          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
         },
         {
           type: 'checkbox',
@@ -36,13 +36,13 @@ const getData = () => {
         {
           type: 'checkbox',
           question: 'Вопрос4?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
+          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
           correct: 1
         },
         {
           type: 'radio',
           question: 'Вопрос5?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
+          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
         },
         {
           type: 'checkbox',
@@ -53,7 +53,7 @@ const getData = () => {
         {
           type: 'radio',
           question: 'Вопрос7?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
+          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
         },
         {
           type: 'checkbox',
@@ -75,12 +75,12 @@ const getData = () => {
         {
           type: 'radio',
           question: 'Вопрос00?',
-          answers: ['правильный', 'неправильный', 'неправильный', 'неправильный'],
+          answers: ['правильный1', 'неправильный', 'неправильный', 'неправильный'],
         },
         {
           type: 'radio',
           question: 'Вопрос02?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
+          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
         },
         {
           type: 'checkbox',
@@ -91,37 +91,9 @@ const getData = () => {
         {
           type: 'checkbox',
           question: 'Вопрос04?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
+          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
           correct: 1
-        },
-        {
-          type: 'radio',
-          question: 'Вопрос05?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос06?',
-          answers: ['правильный1', 'правильный2', 'неправильный', 'неправильный'],
-          correct: 2
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос07?',
-          answers: ['неправильный', 'правильный1', 'правильный2', 'правильный3'],
-          correct: 3
-        },
-        {
-          type: 'radio',
-          question: 'Вопрос99?',
-          answers: ['неправильный', 'правильный', 'неправильный', 'неправильный'],
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос10?',
-          answers: ['правильный1', 'правильный2', 'неправильный', 'правильный3'],
-          correct: 3
-        },
+        }
       ]
     },
   ];
@@ -129,6 +101,7 @@ const getData = () => {
   return dataBase;
 };
 
+// 2-ая
 // функция в которой хранится база,2-ая вызовется
 const renderTheme = (themes) => {
   // console.log('data: ', themes);
@@ -158,6 +131,7 @@ const renderTheme = (themes) => {
   return buttons;
 }
 
+// 5ая
 // в функцию передаются элементы которые нужно плавно скрыть
 const hideElem = (elem) => {
   // getComputedStyle выводит все стили элемента
@@ -179,14 +153,45 @@ const hideElem = (elem) => {
 
   requestAnimationFrame(animation);
 }
+// 8ая
+// перемешать массив
+const shuffle = array => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i -= 1) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]]
+  }
 
+  return newArray
+}
+
+// 7ая
+// функция создает ключи ответов
+const createKeyAnswers = data => {
+  const keys = [];
+
+  for (let i = 0; i < data.answers.length; i++) {
+    if (data.type === 'radio') {
+      keys.push([data.answers[i], !i])
+    } else {
+      keys.push([data.answers[i], i < data.correct])
+    }
+  }
+  return shuffle(keys);
+
+}
+
+// 8ая
 // функция создает список ответов с label и input,возращает массив label
 const createAnswer = data => {
   // указывает тип чекбокса из базы data == quiz.list[questionCount]
   const type = data.type;
+  // создать список ключей и правильных ответов
+  const answers = createKeyAnswers(data);
+  console.log('answers from createAnswer: ', answers);
 
   // создаю массив с label,инпутами и span,вешаю нужные классы и атрибуты
-  return data.answers.map(item => {
+  const labels = answers.map((item, i) => {
     const label = document.createElement('label');
     label.className = 'answer';
 
@@ -194,16 +199,60 @@ const createAnswer = data => {
     input.type = type;
     input.name = 'answer';
     input.className = `answer__${type}`;
+    input.value = i;
 
     const text = document.createElement('span');
     text.className = 'answer__text';
-    text.textContent = item;
+    text.textContent = item[0];
     label.append(input, text);
 
     return label;
   })
+
+  const keys = answers.map(answer => answer[1]);
+  return {
+    labels,
+    keys
+  }
 }
 
+// 9ая
+// выводит результат
+const showResult = (result, quiz) => {
+  console.log('result: ', result);
+  const block = document.createElement('div');
+  block.className = 'main__box main__box_result result';
+
+  const percent = result / quiz.list.length * 100;
+  console.log('percent: ', percent);
+
+  let ratio = 0;
+  for (let i = 0; i < quiz.result.length; i++) {
+    if (percent >= quiz.result[i][0]) {
+      ratio = i;
+    };
+  };
+
+  block.innerHTML = `
+   <h2 class="main__subtitle main__subtitle_result">Ваш результат</h2>
+<div class="result__box">
+  <p class="result__ratio result__ratio_${ratio + 1}">${result}/${quiz.list.length}</p>
+  <p class="result__text">${quiz.result[ratio][1]}</p>
+</div>
+
+ `
+  const button = document.createElement('button');
+  button.className = 'main__btn result__return';
+  button.textContent = 'К списку квизов';
+
+  block.append(button);
+
+  main.append(block);
+
+
+};
+
+// 4ая
 // функция создает страницу с вопросами
 const renderQuiz = quiz => {
   console.log('quiz from render: ', quiz);
@@ -215,7 +264,10 @@ const renderQuiz = quiz => {
   questionBox.classList.add('main__box', 'main__box_question')
   main.append(questionBox)
 
+  // счетчик вопросов
   let questionCount = 0;
+  //счетчик правильных ответов
+  let result = 0;
 
   // показывает вопросы
   const showQuestion = () => {
@@ -235,7 +287,7 @@ const renderQuiz = quiz => {
     legend.textContent = data.question;
 
     // создаю список ответов
-    const answers = createAnswer(data)
+    const answersData = createAnswer(data)
     // console.log('answer000: ', answers);
 
     const button = document.createElement('button');
@@ -243,7 +295,7 @@ const renderQuiz = quiz => {
     button.type = 'submit';
     button.textContent = 'Подтвердить';
 
-    fieldset.append(legend, ...answers);
+    fieldset.append(legend, ...answersData.labels);
     form.append(fieldset, button);
     // вставляю форму в блок
     questionBox.append(form);
@@ -262,11 +314,23 @@ const renderQuiz = quiz => {
       });
 
       if (ok) {
+        // const r = answer.every((result, i) => {
+        //   return !!result === answersData.keys[i]
+        // })
+
+        if (answer.every((result, i) => !!result === answersData.keys[i])) {
+          result += 1;
+        }
+
+        // console.log(r);
+
         // проверяет количество вопросов и запускает следующий
         if (questionCount < quiz.list.length) {
           showQuestion()
         } else {
-          questionBox.innerHTML = '<h1>Вопросы кончились</h1>'
+          // questionBox.innerHTML = '<h1>Вопросы кончились</h1>';
+          hideElem(questionBox);
+          showResult(result, quiz);
         }
 
       } else {
@@ -282,6 +346,7 @@ const renderQuiz = quiz => {
   showQuestion();
 }
 
+// 3ая
 // функция срабатывает при клике на тему,и навешивает клики на кнопки
 const addClick = (buttons, data) => {
   buttons.forEach(btn => {
@@ -301,6 +366,7 @@ const addClick = (buttons, data) => {
   });
 }
 
+// 0ая
 // запуск приложения
 const initQuiz = () => {
 
