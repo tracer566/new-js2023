@@ -6,134 +6,43 @@ const title = document.querySelector('.main__title');
 //  1 ая
 // функция в которой хранится база,1-ая вызовется
 const getData = () => {
-  const dataBase = [
-    {
-      id: '01',
-      theme: 'Тема01',
-      result: [
-        [40, 'Есть задатки,нужно развиваться'],
-        [80, 'Очень хорошо,но есть пробелы'],
-        [100, 'Отличный результат']
-      ],
-      list: [
-        {
-          type: 'checkbox',
-          question: 'Вопрос1?',
-          answers: ['правильный1', 'правильный2', 'неправильный', 'неправильный'],
-          correct: 2
-        },
-        {
-          type: 'radio',
-          question: 'Вопрос2?',
-          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос3?',
-          answers: ['правильный1', 'правильный2', 'правильный3', 'неправильный'],
-          correct: 3
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос4?',
-          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
-          correct: 1
-        },
-        {
-          type: 'radio',
-          question: 'Вопрос5?',
-          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос6?',
-          answers: ['правильный1', 'правильный2', 'неправильный', 'неправильный'],
-          correct: 2
-        },
-        {
-          type: 'radio',
-          question: 'Вопрос7?',
-          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос8?',
-          answers: ['правильный1', 'правильный2', 'неправильный', 'правильный3'],
-          correct: 3
-        },
-      ]
-    },
-    {
-      id: '02',
-      theme: 'Тема02',
-      result: [
-        [30, 'Есть задатки,нужно развиваться'],
-        [60, 'Очень хорошо,но есть пробелы'],
-        [100, 'Отличный результат']
-      ],
-      list: [
-        {
-          type: 'radio',
-          question: 'Вопрос00?',
-          answers: ['правильный1', 'неправильный', 'неправильный', 'неправильный'],
-        },
-        {
-          type: 'radio',
-          question: 'Вопрос02?',
-          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос03?',
-          answers: ['правильный1', 'правильный2', 'правильный3', 'неправильный'],
-          correct: 3
-        },
-        {
-          type: 'checkbox',
-          question: 'Вопрос04?',
-          answers: ['неправильный', 'правильный1', 'неправильный', 'неправильный'],
-          correct: 1
-        }
-      ]
-    },
-  ];
-
-  return dataBase;
+  return fetch('db/quiz_db.json').then(response => response.json())
 };
 
-// 2-ая
-// функция в которой хранится база,2-ая вызовется
-const renderTheme = (themes) => {
-  // console.log('data: ', themes);
-  const list = document.querySelector('.selection__list');
-  list.textContent = '';
+// 11ая
+// загрузит прошлые результаты из localstorage
+const loadResult = (id) => {
+  return localStorage.getItem(id)
+}
 
-  // пустой массив в котором будут кнопки с темами и data-id
-  const buttons = [];
+// 10ая
+// сохраняет результат
+const saveResult = (result, id) => {
+  console.log('result from saveResult: ', result);
+  localStorage.setItem(id, result)
+}
 
-  for (let i = 0; i < themes.length; i += 1) {
-    const li = document.createElement('li');
-    li.className = 'selection__elem';
-    const button = document.createElement('button');
-    button.className = 'selection__theme';
-    // записываю в атрибут data- свойством dataset,data-id='themes[i].id;' со значением из базы
-    button.dataset.id = themes[i].id;
-    button.textContent = themes[i].theme;
+const showElem = (elem) => {
+  let opacity = 0;
+  elem.opacity = opacity;
+  elem.style.display = '';
 
-    // вставляю кнопки в li а li в list
-    li.append(button);
-    list.append(li);
+  const animation = () => {
+    opacity += 0.05;
+    elem.style.opacity = opacity;
 
-    // заполняю пустой массив кнопками
-    buttons.push(button);
+    // если прозрачность ноль анимация работает
+    if (opacity < 1) {
+      requestAnimationFrame(animation);
+    }
   }
-  // отдаю кнопки в константу
-  return buttons;
+
+  requestAnimationFrame(animation);
 }
 
 // 5ая
 // в функцию передаются элементы которые нужно плавно скрыть
-const hideElem = (elem) => {
+const hideElem = (elem, cb) => {
   // getComputedStyle выводит все стили элемента
   //getPropertyValue выводит из всех конкретный стиль
   let opacity = getComputedStyle(elem).getPropertyValue('opacity');
@@ -148,6 +57,7 @@ const hideElem = (elem) => {
       requestAnimationFrame(animation);
     } else {
       elem.style.display = 'none';
+      if (cb) cb();
     }
   }
 
@@ -164,6 +74,55 @@ const shuffle = array => {
 
   return newArray
 }
+
+
+
+// 2-ая
+// функция в которой хранится база,2-ая вызовется
+const renderTheme = (themes) => {
+  console.log('data: ', themes);
+  const list = document.querySelector('.selection__list');
+  list.textContent = '';
+
+  // пустой массив в котором будут кнопки с темами и data-id
+  const buttons = [];
+
+  for (let i = 0; i < themes.length; i += 1) {
+    const li = document.createElement('li');
+    li.className = 'selection__elem';
+    const button = document.createElement('button');
+    button.className = 'selection__theme';
+    // записываю в атрибут data- свойством dataset,data-id='themes[i].id;' со значением из базы
+    button.dataset.id = themes[i].id;
+    button.textContent = themes[i].theme;
+    // вставляю кнопки в li а li в list
+    li.append(button);
+    // загружаю прошлые результаты
+    const result = loadResult(themes[i].id);
+
+    if (result) {
+      const p = document.createElement('p');
+      p.className = 'selection__result';
+      p.innerHTML = `
+<span class="selection__result-ratio">${result}/${themes[i].list.length}</span>
+<span class="selection__result-text">Последний результат</span>
+`;
+
+      li.append(p);
+    }
+
+
+
+    // вставляю li в list
+    list.append(li);
+
+    // заполняю пустой массив кнопками
+    buttons.push(button);
+  }
+  // отдаю кнопки в константу
+  return buttons;
+}
+
 
 // 7ая
 // функция создает ключи ответов
@@ -188,7 +147,7 @@ const createAnswer = data => {
   const type = data.type;
   // создать список ключей и правильных ответов
   const answers = createKeyAnswers(data);
-  console.log('answers from createAnswer: ', answers);
+
 
   // создаю массив с label,инпутами и span,вешаю нужные классы и атрибуты
   const labels = answers.map((item, i) => {
@@ -219,12 +178,11 @@ const createAnswer = data => {
 // 9ая
 // выводит результат
 const showResult = (result, quiz) => {
-  console.log('result: ', result);
   const block = document.createElement('div');
   block.className = 'main__box main__box_result result';
 
   const percent = result / quiz.list.length * 100;
-  console.log('percent: ', percent);
+
 
   let ratio = 0;
   for (let i = 0; i < quiz.result.length; i++) {
@@ -249,13 +207,22 @@ const showResult = (result, quiz) => {
 
   main.append(block);
 
+  // вернуться к списку квизов
+  button.addEventListener('click', () => {
+    // location.reload()
+    hideElem(block, () => {
+      showElem(title);
+      showElem(selection);
+    });
+  })
+
 
 };
+
 
 // 4ая
 // функция создает страницу с вопросами
 const renderQuiz = quiz => {
-  console.log('quiz from render: ', quiz);
   hideElem(title);
   hideElem(selection);
 
@@ -331,6 +298,7 @@ const renderQuiz = quiz => {
           // questionBox.innerHTML = '<h1>Вопросы кончились</h1>';
           hideElem(questionBox);
           showResult(result, quiz);
+          saveResult(result, quiz.id)
         }
 
       } else {
@@ -368,10 +336,12 @@ const addClick = (buttons, data) => {
 
 // 0ая
 // запуск приложения
-const initQuiz = () => {
+const initQuiz = async () => {
+  localStorage.getItem()
 
   // получаю данные из базы
-  const data = getData();
+  const data = await getData();
+  console.log('data: ', data);
   // получаю все кнопки
   const buttons = renderTheme(data);
 
