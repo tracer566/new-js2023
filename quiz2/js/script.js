@@ -213,6 +213,7 @@ const showResult = (result, quiz) => {
     hideElem(block, () => {
       showElem(title);
       showElem(selection);
+      initQuiz();
     });
   })
 
