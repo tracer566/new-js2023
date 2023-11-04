@@ -337,7 +337,7 @@ const addClick = (buttons, data) => {
 // 0ая
 // запуск приложения
 const initQuiz = async () => {
-  localStorage.getItem()
+  //localStorage.getItem()
 
   // получаю данные из базы
   const data = await getData();
