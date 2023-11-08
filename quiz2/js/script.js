@@ -206,6 +206,7 @@ const showResult = (result, quiz) => {
   block.append(button);
 
   main.append(block);
+  showElem(block)
 
   // вернуться к списку квизов
   button.addEventListener('click', () => {
@@ -224,13 +225,18 @@ const showResult = (result, quiz) => {
 // 4ая
 // функция создает страницу с вопросами
 const renderQuiz = quiz => {
-  hideElem(title);
-  hideElem(selection);
+
 
   // создаю блок где будут вопросы
   const questionBox = document.createElement('div')
   questionBox.classList.add('main__box', 'main__box_question')
-  main.append(questionBox)
+  hideElem(title);
+  hideElem(selection, () => {
+    showElem(questionBox)
+    main.append(questionBox)
+  });
+
+
 
   // счетчик вопросов
   let questionCount = 0;
@@ -267,6 +273,7 @@ const renderQuiz = quiz => {
     form.append(fieldset, button);
     // вставляю форму в блок
     questionBox.append(form);
+    showElem(form)
 
     // создать массив
     // form.answer просто коллекция без методов
@@ -297,9 +304,12 @@ const renderQuiz = quiz => {
           showQuestion()
         } else {
           // questionBox.innerHTML = '<h1>Вопросы кончились</h1>';
-          hideElem(questionBox);
-          showResult(result, quiz);
-          saveResult(result, quiz.id)
+          saveResult(result, quiz.id);
+          hideElem(questionBox, () => {
+            showResult(result, quiz);
+          });
+          // showResult(result, quiz);
+
         }
 
       } else {
