@@ -213,14 +213,8 @@ const playMusic = event => {
       trackCards[i].classList.remove('track_active');
 
     }
-
   };
-
-
-
-
 };
-
 
 const pausePlayer = () => {
   const trackActive = document.querySelector('.track_active');
@@ -243,10 +237,7 @@ const pausePlayer = () => {
     trackActive.classList.add('track_pause');
 
   }
-
-
 };
-
 
 // функция с циклом навешивает событие на карточки
 const addHandlerTrack = () => {
@@ -371,7 +362,7 @@ const init = () => {
       catalogAddBtn.remove();
     });
 
-  })
+  });
 
   prevBtn.addEventListener('click', playMusic);
   nextBtn.addEventListener('click', playMusic);
@@ -379,7 +370,7 @@ const init = () => {
   // включает следующий трэк
   audio.addEventListener('ended', () => {
     nextBtn.dispatchEvent(new Event('click', { bubbles: true }))
-  })
+  });
 
   audio.addEventListener('timeupdate', updateTime);
   playerProgressInput.addEventListener('change', () => {
@@ -393,13 +384,13 @@ const init = () => {
     renderCatalog(data)
     checkCount()
     // console.log('data: ', data);
-  })
+  });
 
   headerLogo.addEventListener('click', () => {
     renderCatalog(dataMusic)
     checkCount()
     // console.log('data: ', data);
-  })
+  });
 
   likeBtn.addEventListener('click', () => {
     const index = favoriteList.indexOf(likeBtn.dataset.idTrack)
@@ -412,13 +403,13 @@ const init = () => {
     }
 
     localStorage.setItem('favorite', JSON.stringify(favoriteList))
-  })
+  });
 
   playerVolumeInput.addEventListener('input', () => {
     const value = playerVolumeInput.value;
     audio.volume = value / 100;
     localStorage.setItem('volume', audio.volume)
-  })
+  });
 
   muteBtn.addEventListener('click', () => {
     if (audio.volume) {
@@ -434,9 +425,7 @@ const init = () => {
       playerVolumeInput.value = audio.volume * 100
 
     }
-  })
-
-}
-
+  });
+};
 
 init()

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="Anime, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Аниме портал</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<!-- Css Styles -->
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder" class="preloder">
+<div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<header class="header">
+<div class="container">
+<div class="row">
+<div class="col-lg-2">
+<div class="header__logo">
+<a href="./index.html">
+<img src="img/logo.png" alt="img">
+</a>
+</div>
+</div>
+<div class="col-lg-8">
+<div class="header__nav">
+<nav class="header__menu mobile-menu">
+<ul>
+<li><a href="./index.html">Главная</a></li>
+<li class="active"><a href="./categories.html">Категории <span class="arrow_carrot-down"></span></a>
+    <ul class="dropdown">
+        <li><a href="./categories.html">Категории</a></li>
+    </ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="col-lg-2">
+<div class="header__right">
+<a href="#" class="search-switch"><span class="icon_search"></span></a>
+<a href="./login.html"><span class="icon_profile"></span></a>
+</div>
+</div>
+</div>
+<div id="mobile-menu-wrap"></div>
+</div>
+</header>
+<!-- Header End -->
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="breadcrumb__links">
+<a href="./index.html"><i class="fa fa-home"></i> Главная</a>
+<a href="./categories.html">Категории</a>
+<span>Romance</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Anime Section Begin -->
+<section class="anime-details spad">
+<div class="container">
+<div class="anime__details__content">
+<div class="row">
+<div class="col-lg-3">
+<div class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg">
+<div class="view"><i class="fa fa-eye"></i> 9141</div>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="anime__details__text">
+<div class="anime__details__title">
+<h3>Fate Stay Night: Unlimited Blade</h3>
+<span>フェイト／ステイナイト, Feito／sutei naito</span>
+</div>
+
+<p>Каждый человек, населяющий мир Альсии, отмечен «Графом» или числом, написанным на
+их тело. Для матери Хины ее общее количество падает до 0, и ее затягивает в Бездну.
+чтобы его больше никогда не видели. Но последние слова ее матери отправляют Хину на поиски
+легендарный герой Войны Отходов – легендарный Ас!</p>
+<div class="anime__details__widget">
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <ul>
+            <li><span>Дата выхода:</span> Oct 02, 2019 to ?</li>
+            <li><span>Статус:</span> Airing</li>
+            <li><span>Жанр:</span> Action, Adventure, Fantasy, Magic</li>
+        </ul>
+    </div>
+    <div class="col-lg-6 col-md-6">
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Anime Section End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+<div class="page-up">
+<a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+<div class="footer__logo">
+<a href="./index.html"><img src="img/logo.png" alt="img"></a>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="footer__nav">
+<ul>
+<li class="active"><a href="./index.html">Главная</a></li>
+<li><a href="./categories.html">Категории</a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-3">
+<p>
+Copyright &copy;<span class="fullYear"></span> All rights reserved 
+</p>
+
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+let footerDates = document.querySelectorAll('.fullYear');
+
+for(let i = 0;i < footerDates.length;i++){
+  footerDates[i].textContent = new Date().getFullYear()
+}
+
+</script>
+
+<!-- Semodal-search -->
+<div class="search-model">
+<div class="h-100 d-flex flex-column align-items-center justify-content-start pt-5">
+<div class="search-close-switch"><i class="icon_close"></i></div>
+<form class="search-model-form pt-5">
+<input type="text" id="search-input" placeholder="Искать аниме...">
+</form>
+<div class="search-model-result d-flex flex-column mt-4">
+  <a class="pt-2" href="#">Первая</a>
+  <a class="pt-2" href="#">Вторая</a>
+  <a class="pt-2" href="#">Третья</a>
+  <a class="pt-2" href="#">Четвертая</a>
+  <a class="pt-2" href="#">Пятая</a>
+</div>
+</div>
+</div>
+<!-- modal-search -->
+
+</body>
+
+</html>
