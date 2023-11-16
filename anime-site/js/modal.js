@@ -44,8 +44,8 @@ const modal = () => {
           console.log('dataItem: ', searcStr, dataItem.title, dataItem.title.includes(searcStr));
           //includes метод массива,похож на indexOf
           // toLowerCase чтобы с регистром работало корректно
-          return dataItem.title.toLowerCase().includes(searcStr) ||
-            dataItem.description.toLowerCase().includes(searcStr)
+          return dataItem.title.toLowerCase().includes(searcStr.toLowerCase()) ||
+            dataItem.description.toLowerCase().includes(searcStr.toLowerCase())
         })
         // console.log('filterData', filterData);
         // отрезаю 5 штук для ссылок
