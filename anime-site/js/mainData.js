@@ -1,11 +1,80 @@
 const $mainData = () => {
 
   const renderAnimeList = (arrayAnimes, ganres) => {
-    // console.log('ganres: ', ganres);
-    // console.log('arrayAnimes: ', arrayAnimes);
+    const cardsWrapper = document.querySelector('.product .js-content');
+    // очищаю главный блок всех карточек
+    cardsWrapper.innerHTML = '';
 
-  }
-  // выводит топ анимэ справа
+    // перебираю жанры,для создания секций с карточками
+    ganres.forEach((itemGanre) => {
+      // создаю главный блок для секции с карточками 
+      const cardsMainBlock = document.createElement('div');
+
+      // создаю блок с карточками по жанрам
+      const cardsList = document.createElement('div');
+      // создаю 2-ой row
+      cardsList.classList.add('row');
+      // создаю переменную CardsDataList и фильтрую массив данных карточек arrayAnimes,чтобы жанры в карточках совпал с жанром itemGanre
+      // в переменной будет по 6 массивов с карточками для 6 жанров
+      // сокращенная запись без слова return,работает так же
+      const cardsDataList = arrayAnimes.filter(dataItem => dataItem.ganre === itemGanre
+      );
+      console.log('CardsDataList: ', cardsDataList);
+
+      // в блок главный блок вставляю верстку 1-й row с заголовком и кнопкой
+      cardsMainBlock.insertAdjacentHTML('afterbegin', `
+      <div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+<div class="section-title">
+<h4>${itemGanre}</h4>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="btn__all">
+<a href="/categories.html" class="primary-btn">Смотреть все <span class="arrow_right"></span></a>
+</div>
+</div>
+</div>
+      `);
+
+      // перебираю каждый отфильтрованный массив и создаю карточки,для 1 из 6 секций
+      cardsDataList.forEach((itemCard) => {
+        // в блок с карточками по жанрам вставляю верстку
+        cardsList.insertAdjacentHTML('afterbegin', `
+<div class="col-lg-4 col-md-6 col-sm-6">
+<div class="product__item">
+<div class="product__item__pic set-bg" data-setbg="${itemCard.image}">
+<div class="ep">${itemCard.rating} / 10</div>
+<div class="view"><i class="fa fa-eye"></i>${itemCard.views}</div>
+</div>
+<div class="product__item__text">
+<ul>
+<li>Активный</li>
+<li>Фильм</li>
+</ul>
+<h5><a href="anime-details.html">${itemCard.title}
+</div></a></h5>
+</div>
+</div>
+</div>
+      `);
+      });
+
+      // вставляю все в главный блок
+      // append вставляет перед концом узла,prepend после начала узла DOM
+      // 2-ой row вставляю после 1-го row и секция с карточками готова
+      cardsMainBlock.append(cardsList);
+      // все 6 сгенерированых секций вставляю в самый главный блок
+      cardsWrapper.append(cardsMainBlock)
+
+      // вызываю снова функцию вставляющую все картинки
+      bgElements()
+
+
+    });
+
+  };
+  // выводит топ анимэ справа 
   const renderTopAnime = (topAnime) => {
     const cardWrapper = document.querySelector('.filter__gallery');
     cardWrapper.innerHTML = '';
