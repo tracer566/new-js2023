@@ -1,5 +1,6 @@
 const $mainData = () => {
 
+  // функция создает 6 секций с заголовками и карточками по жанрам
   const renderAnimeList = (arrayAnimes, ganres) => {
     const cardsWrapper = document.querySelector('.product .js-content');
     // очищаю главный блок всех карточек
@@ -9,6 +10,8 @@ const $mainData = () => {
     ganres.forEach((itemGanre) => {
       // создаю главный блок для секции с карточками 
       const cardsMainBlock = document.createElement('div');
+      // добавил отсуп секциям
+      cardsMainBlock.classList.add('mb-5');
 
       // создаю блок с карточками по жанрам
       const cardsList = document.createElement('div');
@@ -75,7 +78,7 @@ const $mainData = () => {
     });
 
   };
-  // выводит топ анимэ справа 
+  // функция выводит топ аниме в сайдбаре справа 
   const renderTopAnime = (topAnime) => {
     const cardWrapper = document.querySelector('.filter__gallery');
     cardWrapper.innerHTML = '';
@@ -124,25 +127,11 @@ data-setbg="${item.image}">
       // console.log('responce: ', responce);
       return responce.json() //распаковка данных
     }).then(data => {
-      // console.log('data:', );
-      // let res = data.anime.sort((a, b) => {
-      //   //демонстрация в консоли как работает
-      //   console.log('id:', a.id, 'a:', a.views, 'id:', b.id, 'b:', b.views);
-      //   console.log('a-b:', a.views - b.views);
-      // })
 
-      //сортирую массив по просмотрам от большего к меньшему
-      let sortViews = data.anime.sort((a, b) => b.views - a.views);
-      // методом splice отрезаю 5 самых просматриваемых от начала,они попадут в переменную topAnime
-      //в виде массива из 5 элементов 
-      let topAnime = sortViews.splice(0, 5);
-      // отправляю в функцию данные
-      renderTopAnime(topAnime)
-
+      /*----создание 6 секций с карточками по жанрам------*/
       // 1 способ:удалить дубли в массиве с помощью коллекции,туда попадут уникальные элементы
       const ganres = new Set();
       data.anime.forEach((elem) => {
-
         // add - метод коллекции,в нее записываю жанры
         ganres.add(elem.ganre)
       });
@@ -152,6 +141,7 @@ data-setbg="${item.image}">
 
       // передаю в функцию массив с анимэ и коллекцию жанров 
       renderAnimeList(data.anime, ganres)
+      console.log('data.anime: ', data.anime);
 
 
       // 2 способ:удалить дубли в массиве с помощью метода фильтр
@@ -167,6 +157,21 @@ data-setbg="${item.image}">
 
       // console.log('clearGanres: ', clearGanres);
 
+
+      /*----создание топа аниме в сайдбаре----*/
+      // let res = data.anime.sort((a, b) => {
+      //   //демонстрация в консоли как работает
+      //   console.log('id:', a.id, 'a:', a.views, 'id:', b.id, 'b:', b.views);
+      //   console.log('a-b:', a.views - b.views);
+      // })
+
+      //сортирую массив по просмотрам от большего к меньшему
+      let sortViews = data.anime.sort((a, b) => b.views - a.views);
+      // методом splice отрезаю 5 самых просматриваемых от начала,они попадут в переменную topAnime
+      //в виде массива из 5 элементов 
+      let topAnime = sortViews.splice(0, 5);
+      // отправляю в функцию данные
+      renderTopAnime(topAnime)
 
     });
 
