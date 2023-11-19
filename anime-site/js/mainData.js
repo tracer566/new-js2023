@@ -35,7 +35,7 @@ const $mainData = () => {
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4">
 <div class="btn__all">
-<a href="/categories.html" class="primary-btn">Смотреть все <span class="arrow_right"></span></a>
+<a href="./categories.html?ganre=${itemGanre}" target="_blank" class="primary-btn">Смотреть все <span class="arrow_right"></span></a>
 </div>
 </div>
 </div>
@@ -72,7 +72,7 @@ const $mainData = () => {
 </div>
 <div class="product__item__text">
 ${ul.outerHTML}
-<h5><a href="anime-details.html">${itemCard.title}
+<h5><a target="_blank" href="anime-details.html?itemId=${itemCard.id}">${itemCard.title}
 </div></a></h5>
 </div>
 </div>
