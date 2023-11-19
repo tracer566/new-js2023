@@ -1,19 +1,28 @@
 const slider = () => {
   const swiper = new Swiper('.swiper',{
 
-    // If we need pagination
+    // пагинация или точки
   pagination: {
     el: '.swiper-pagination',
   },
 
-    // Navigation arrows
+    // стрелки навигации
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
+  // эффект слайдера
   effect: "fade",
-  speed: 1000
-})
-}
+  speed: 1000,
+  // бесконечный цикл
+  loop: true,
+  autoplay: {
+   delay: 5000,
+ }
+
+
+});
+
+};
 
 slider()

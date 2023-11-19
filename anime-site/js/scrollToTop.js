@@ -5,11 +5,13 @@ const scrollToTop = () => {
     event.preventDefault()
     console.log(event)
 
+    /*не кроссбраузерный варик*/
     // window.scrollTo({
     //   top: 0,
     //   behavior: 'smooth'
     // })
 
+     /*кроссбраузерный варик*/
     seamless.scrollIntoView(document.querySelector(".header"), {
       behavior: "smooth",
       block: "center",
@@ -31,7 +33,7 @@ scrollToTop()
 // })
 
 
-// еше варик
+/* еше варик не кроссбраузерный  */
 // const anchors = document.querySelectorAll('a[href*="#"]')
 
 // for (let anchor of anchors) {
@@ -39,7 +41,6 @@ scrollToTop()
 // e.preventDefault()
 
 // const blockID = anchor.getAttribute('href').substr(0)
-// // console.log('blockID',blockID);
 // document.getElementById(blockID).scrollIntoView({
 // behavior: 'smooth',
 // block: 'start'
