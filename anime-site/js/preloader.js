@@ -7,7 +7,7 @@ const preloder = () => {
 
   setTimeout(() => {
     preloder.classList.remove('active')
-  }, 1500)
+  }, 1000)
 }
 
 preloder()

@@ -24,11 +24,11 @@ const scrollToTop = () => {
 scrollToTop()
 
 
-const hero2 = document.querySelector('.hero2');
-document.body.addEventListener('scroll', () => {
-  console.log(hero2.scrollTop);
+// const hero2 = document.querySelector('.hero2');
+// document.body.addEventListener('scroll', () => {
+//   console.log(hero2.scrollTop);
 
-})
+// })
 
 
 // еше варик
