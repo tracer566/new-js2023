@@ -66,10 +66,12 @@ const $mainData = () => {
         cardsList.insertAdjacentHTML('afterbegin', `
 <div class="col-lg-4 col-md-6 col-sm-6">
 <div class="product__item">
+<a target="_blank" href="anime-details.html?itemId=${itemCard.id}">
 <div class="product__item__pic set-bg" data-setbg="${itemCard.image}">
 <div class="ep">${itemCard.rating} / 10</div>
 <div class="view"><i class="fa fa-eye"></i>${itemCard.views}</div>
 </div>
+</a>
 <div class="product__item__text">
 ${ul.outerHTML}
 <h5><a target="_blank" href="anime-details.html?itemId=${itemCard.id}">${itemCard.title}
