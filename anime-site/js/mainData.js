@@ -21,7 +21,8 @@ const $mainData = () => {
       );
       console.log('CardsDataList: ', cardsDataList);
 
-      // в блок главный блок вставляю верстку 1-й row с заголовком и кнопкой
+      // в главный блок cardsMainBlock вставляю верстку 1-й row с заголовком секции и кнопкой,
+      //forEach выше создаст 6 таких
       cardsMainBlock.insertAdjacentHTML('afterbegin', `
       <div class="row">
 <div class="col-lg-8 col-md-8 col-sm-8">
@@ -37,9 +38,9 @@ const $mainData = () => {
 </div>
       `);
 
-      // перебираю каждый отфильтрованный массив и создаю карточки,для 1 из 6 секций
+      // перебираю каждый отфильтрованный массив и создаю карточки,для 1 из 6 секций;
       cardsDataList.forEach((itemCard) => {
-        // в блок с карточками по жанрам вставляю верстку
+        // в блок с карточками по жанрам вставляю верстку и данные беру из cardsDataList,это потом вставится в cardsMainBlock и будет 2-ой row
         cardsList.insertAdjacentHTML('afterbegin', `
 <div class="col-lg-4 col-md-6 col-sm-6">
 <div class="product__item">
