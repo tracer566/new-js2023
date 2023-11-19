@@ -10,19 +10,19 @@ const $mainData = () => {
     ganres.forEach((itemGanre) => {
       // создаю главный блок для секции с карточками 
       const cardsMainBlock = document.createElement('div');
-      // добавил отсуп секциям
+      // добавил отступ секциям
       cardsMainBlock.classList.add('mb-5');
 
       // создаю блок с карточками по жанрам
       const cardsList = document.createElement('div');
       // создаю 2-ой row
       cardsList.classList.add('row');
-      // создаю переменную CardsDataList и фильтрую массив данных карточек arrayAnimes,чтобы жанры в карточках совпал с жанром itemGanre
+      // создаю переменную с данными CardsDataList и фильтрую массив данных карточек arrayAnimes,чтобы жанры в карточках совпал с жанром itemGanre
       // в переменной будет по 6 массивов с карточками для 6 жанров
       // сокращенная запись без слова return,работает так же
       const cardsDataList = arrayAnimes.filter(dataItem => dataItem.ganre === itemGanre
       );
-      console.log('CardsDataList: ', cardsDataList);
+      // console.log('CardsDataList: ', cardsDataList);
 
       // в главный блок cardsMainBlock вставляю верстку 1-й row с заголовком секции и кнопкой,
       //forEach выше создаст 6 таких
@@ -43,6 +43,25 @@ const $mainData = () => {
 
       // перебираю каждый отфильтрованный массив и создаю карточки,для 1 из 6 секций;
       cardsDataList.forEach((itemCard) => {
+
+        // создание тэгов
+        const ul = document.createElement('ul');
+
+        itemCard.tags.forEach((tag) => {
+          ul.insertAdjacentHTML('afterbegin', `
+          <li>${tag}</li>
+          `);
+        });
+
+        // через свойство,outerHTML,которое в прототипе,вставлю ul в карточки
+
+        // console.dir(ul);
+        // console.log(ul.outerHTML);
+        /*было вместо ${ul.outerHTML}:<ul>
+          <li>Активный</li>
+          <li>Фильм</li>
+          </ul>*/
+
         // в блок с карточками по жанрам вставляю верстку и данные беру из cardsDataList,это потом вставится в cardsMainBlock и будет 2-ой row
         cardsList.insertAdjacentHTML('afterbegin', `
 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -52,10 +71,7 @@ const $mainData = () => {
 <div class="view"><i class="fa fa-eye"></i>${itemCard.views}</div>
 </div>
 <div class="product__item__text">
-<ul>
-<li>Активный</li>
-<li>Фильм</li>
-</ul>
+${ul.outerHTML}
 <h5><a href="anime-details.html">${itemCard.title}
 </div></a></h5>
 </div>
