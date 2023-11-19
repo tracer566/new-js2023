@@ -139,7 +139,7 @@ data-setbg="${item.image}">
 
   };
 
-
+  // получение данных из базы,это 1-ое действие после вызова $mainData
   const data = fetch('./db.json')
     .then(responce => {
       // console.log('responce: ', responce);
