@@ -1,5 +1,5 @@
 const $mainData = () => {
-
+  let preloder = document.querySelector('.preloder');
   // создает меню в шапке
   const renderGanreListMenu = (ganres) => {
     const dropdownBlock = document.querySelector('.header__menu .dropdown');
@@ -102,9 +102,13 @@ ${ul.outerHTML}
       cardsWrapper.append(cardsMainBlock)
 
       // вызываю снова функцию вставляющую все картинки
-      bgElements()
+      bgElements();
 
-
+      // отключаю прелоадер
+      setTimeout(() => {
+        preloder.classList.remove('active')
+      }, 1000)
+      // отключаю прелоадер
     });
 
   };

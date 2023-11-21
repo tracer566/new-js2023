@@ -1,4 +1,6 @@
 const detailAnimeData = () => {
+  let preloder = document.querySelector('.preloder');
+
   // создает меню в шапке
   const renderGanreListMenu = (ganres) => {
     const dropdownBlock = document.querySelector('.header__menu .dropdown');
@@ -14,15 +16,12 @@ const detailAnimeData = () => {
   // функция создает страницу аниме из базы 
   const renderAnimeDetail = (arrayAnimes, itemId) => {
     const animeBlock = document.querySelector('.anime__details__pic');
-    console.log('animeBlock : ', animeBlock);
     const animeView = document.querySelector('.view');
     const animeTitle = document.querySelector('.anime__details__title h3');
     const animeSubtitle = document.querySelector('.anime__details__title span');
     const animeText = document.querySelector('.anime__details__text p');
     const animeWidget = document.querySelectorAll('.anime__details__widget ul li');
-    console.log('animeWidget: ', animeWidget);
-
-
+    const breadcrumb = document.querySelector('.breadcrumb__links span');
 
     // // поиск аниме из базы
     const animeClick = arrayAnimes.find(anime => {
@@ -30,6 +29,7 @@ const detailAnimeData = () => {
       return anime.id === itemId;
     });
 
+    breadcrumb.textContent = animeClick.ganre
     // создание страницы по данным из базы
     if (animeClick) {
       animeBlock.dataset.setbg = animeClick.image;
@@ -53,14 +53,19 @@ const detailAnimeData = () => {
       document.querySelectorAll('.set-bg').forEach(elem => {
         elem.style.backgroundImage = `url(${elem.dataset.setbg})`;
       });
+      // отключаю прелоадер
+      setTimeout(() => {
+        preloder.classList.remove('active')
+      }, 500)
+      // отключаю прелоадер
 
     } else {
       alert('Аниме отсутствует')
     };
-
-
   };
 
+  // добавил active в html
+  // preloder.classList.add('active');
   // получение данных из базы,это 1-ое действие после вызова $mainData
   const data = fetch('./db.json')
     .then(responce => responce.json()).then(data => {
@@ -71,7 +76,7 @@ const detailAnimeData = () => {
 
       // создаю класс для передачи параметра,URLSearchParams-название не меняется
       const idParams = new URLSearchParams(window.location.search).get('itemId');
-      console.log('idParams: ', idParams);
+      // console.log('idParams: ', idParams);
       // вернет название жанр строкой из параметров поисковой строки
 
       // посмотреть текст параметра

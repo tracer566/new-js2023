@@ -1,5 +1,6 @@
 // код почти тот же что и в файле mainData,но аккуратней
 const categoriesData = () => {
+  let preloder = document.querySelector('.preloder');
   // создает меню в шапке
   const renderGanreListMenu = (ganres) => {
     const dropdownBlock = document.querySelector('.header__menu .dropdown');
@@ -77,11 +78,15 @@ const categoriesData = () => {
       cardsWrapper.append(cardsMainBlock)
 
       cardsWrapper.querySelectorAll('.set-bg').forEach((elem, index, array) => {
-        const src = elem.dataset.setbg
-
-        elem.style.backgroundImage = `url(${src})`
-
+        const src = elem.dataset.setbg;
+        elem.style.backgroundImage = `url(${src})`;
       });
+
+      // отключаю прелоадер
+      setTimeout(() => {
+        preloder.classList.remove('active')
+      }, 1000)
+      // отключаю прелоадер
 
 
     });
