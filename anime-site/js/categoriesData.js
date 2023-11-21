@@ -26,6 +26,7 @@ const categoriesData = () => {
       const cardsList = document.createElement('div');
       cardsList.classList.add('row');
       // метод includes,проверит в каждом элементе массива,тег жанра и в фильтр соберутся нужные
+      // метод includes вернет true или false
       const cardsDataList = arrayAnimes.filter(dataItem => dataItem.tags.includes(itemGanre)
       );
 
