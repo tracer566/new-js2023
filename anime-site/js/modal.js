@@ -8,6 +8,26 @@ const modal = () => {
   resultWrap.style.width = '100%';
   resultWrap.style.maxWidth = '500px';
 
+  //оптимизация для запросов,чтобы не на каждый символ улетал запрос
+  const debounce = (func, ms = 500) => {
+    let timer;
+
+    return (...args) => {
+      timer = setTimeout(() => {
+        clearTimeout(timer)
+        func.apply(this, args)
+      }, ms)
+    }
+
+  };
+
+  // вызовется первая,оптимизирует запрос
+  const searchDebounce = debounce((searchStr) => {
+    searchFunc(searchStr);
+  }, 500);
+  //оптимизация для запросов,чтобы не на каждый символ улетал запрос
+
+
   // рендер ссылок с результатами поиска
   const renderLink = (searchResult) => {
     // console.log('searchResult: ', searchResult);
@@ -24,7 +44,7 @@ const modal = () => {
         resultLink.setAttribute('target', '_blank');
         resultLink.textContent = searchElem.title;
         resultWrap.append(resultLink)
-      }
+      };
       // else {
       //   const resultMessage = document.createElement('p');
       //   resultMessage.textContent = 'Ничего не найдено или неверный регистр';
@@ -32,20 +52,20 @@ const modal = () => {
       // }
     });
 
-  }
+  };
 
   // поиск данных из формы в базе
-  const searchFunc = (searcStr) => {
+  const searchFunc = (searchStr) => {
     fetch('./db.json').then((response) => {
       return response.json()
     })
       .then((data) => {
         const filterData = data.anime.filter(dataItem => {
-          console.log('dataItem: ', searcStr, dataItem.title, dataItem.title.includes(searcStr));
+          // console.log('dataItem: ', searchStr, dataItem.title, dataItem.title.includes(searchStr));
           //includes метод массива,похож на indexOf
           // toLowerCase чтобы с регистром работало корректно
-          return dataItem.title.toLowerCase().includes(searcStr.toLowerCase()) ||
-            dataItem.description.toLowerCase().includes(searcStr.toLowerCase())
+          return dataItem.title.toLowerCase().includes(searchStr.toLowerCase()) ||
+            dataItem.description.toLowerCase().includes(searchStr.toLowerCase())
         })
         // console.log('filterData', filterData);
         // отрезаю 5 штук для ссылок
@@ -55,30 +75,34 @@ const modal = () => {
         renderLink(result)
 
       });
-  }
+  };
 
   modalBtn.addEventListener('click', () => {
     // modal.style.display = 'block'
     modal.classList.add('active')
-  })
+  });
 
   modalClose.addEventListener('click', () => {
     // modal.style.display = 'none'
     modal.classList.remove('active');
     resultWrap.innerHTML = '';
-  })
+  });
 
   searchInput.addEventListener('input', (event) => {
     // console.log(searchInput.value);
     // console.log(event.target.value);
     /* отдаю строку поиска функции*/
-    searchFunc(event.target.value);
-  })
+    // было
+    // searchFunc(event.target.value);
+    // стало 
+    searchDebounce(event.target.value);
+
+  });
 
 
-}
+};
 
-modal()
+modal();
 // console.dir(document);
 
 // let url_plus = window.location.search;
