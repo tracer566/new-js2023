@@ -18,6 +18,11 @@ rel="stylesheet">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
+
+<script src="./js/modal.js" defer></script>
+<script src="./js/scrollToTop.js" defer></script>
+<script src="./js/categoriesData.js" defer></script>
+
 </head>
 
 <body>
@@ -86,7 +91,7 @@ rel="stylesheet">
 <section class="product-page spad">
 <div class="container">
 <div class="row">
-<div class="col-lg-8">
+<div class="col-lg-8 js-content">
 <div class="product__page__content">
 <div class="product__page__title">
 <div class="row">
@@ -375,7 +380,7 @@ rel="stylesheet">
 <div class="product__sidebar">
 <div class="product__sidebar__view">
 <div class="section-title">
-<h5>Top Views</h5>
+<h5>Популярные</h5>
 </div>
 <div class="filter__gallery">
 <div class="product__sidebar__view__item set-bg mix day years"
@@ -433,7 +438,7 @@ data-setbg="img/sidebar/tv-5.jpg">
 <div class="footer__nav">
 <ul>
 <li class="active"><a href="./index.html">Главная</a></li>
-<li><a href="./categories.html">Categories</a></li>
+<li><a href="./categories.html">Категории</a></li>
 
 </ul>
 </div>
@@ -466,6 +471,10 @@ data-setbg="img/sidebar/tv-5.jpg">
 const params = new URLSearchParams(window.location.search)
 console.log(params.get("ganre"));
 </script> -->
+
+<!-- полифил для скрола -->
+<script src="js/libs/seamless-scroll-polyfill@latest.net_npm_seamless-scroll-polyfill@latest"></script>
+
 </body>
 
 </html>

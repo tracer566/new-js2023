@@ -1,5 +1,17 @@
 const $mainData = () => {
 
+  // создает меню в шапке
+  const renderGanreListMenu = (ganres) => {
+    const dropdownBlock = document.querySelector('.header__menu .dropdown');
+    dropdownBlock.innerHTML = '';
+
+    ganres.forEach((ganreCategory) => {
+      dropdownBlock.insertAdjacentHTML('beforeend', `
+      <li><a target="_blank" href="./categories.html?ganre=${ganreCategory}">${ganreCategory}</a></li>
+      `);
+    });
+  };
+
   // функция создает 6 секций с заголовками и карточками по жанрам
   const renderAnimeList = (arrayAnimes, ganres) => {
     const cardsWrapper = document.querySelector('.product .js-content');
@@ -26,7 +38,7 @@ const $mainData = () => {
 
       // в главный блок cardsMainBlock вставляю верстку 1-й row с заголовком секции и кнопкой,
       //forEach выше создаст 6 таких
-      cardsMainBlock.insertAdjacentHTML('afterbegin', `
+      cardsMainBlock.insertAdjacentHTML('beforeend', `
       <div class="row">
 <div class="col-lg-8 col-md-8 col-sm-8">
 <div class="section-title">
@@ -48,7 +60,7 @@ const $mainData = () => {
         const ul = document.createElement('ul');
 
         itemCard.tags.forEach((tag) => {
-          ul.insertAdjacentHTML('afterbegin', `
+          ul.insertAdjacentHTML('beforeend', `
           <li>${tag}</li>
           `);
         });
@@ -63,7 +75,7 @@ const $mainData = () => {
           </ul>*/
 
         // в блок с карточками по жанрам вставляю верстку и данные беру из cardsDataList,это потом вставится в cardsMainBlock и будет 2-ой row
-        cardsList.insertAdjacentHTML('afterbegin', `
+        cardsList.insertAdjacentHTML('beforeend', `
 <div class="col-lg-4 col-md-6 col-sm-6">
 <div class="product__item">
 <a target="_blank" href="anime-details.html?itemId=${itemCard.id}">
@@ -113,7 +125,7 @@ ${ul.outerHTML}
       //      `;
 
       // 2-й вариант вставки
-      cardWrapper.insertAdjacentHTML('afterbegin', `
+      cardWrapper.insertAdjacentHTML('beforeend', `
        <div class="product__sidebar__view__item set-bg mix"
 data-setbg="${item.image}">
 <div class="ep">${item.rating} / 10</div>
@@ -128,7 +140,7 @@ data-setbg="${item.image}">
     });
 
     // проверяю scope функции и вызываю bgElements(),чтобы создались картинки,иначе пусто
-    console.dir(renderTopAnime)
+    // console.dir(renderTopAnime)
 
     cardWrapper.querySelectorAll('.set-bg').forEach((elem, index, array) => {
       const src = elem.dataset.setbg
@@ -158,8 +170,9 @@ data-setbg="${item.image}">
       // console.log('ganres: ', ganres);
 
       // передаю в функцию массив с анимэ и коллекцию жанров 
-      renderAnimeList(data.anime, ganres)
-      console.log('data.anime: ', data.anime);
+      renderAnimeList(data.anime, ganres);
+      // передаю в функцию массив коллекции жанров для создания меню
+      renderGanreListMenu(ganres);
 
 
       // 2 способ:удалить дубли в массиве с помощью метода фильтр
@@ -175,7 +188,6 @@ data-setbg="${item.image}">
 
       // console.log('clearGanres: ', clearGanres);
 
-
       /*----создание топа аниме в сайдбаре----*/
       // let res = data.anime.sort((a, b) => {
       //   //демонстрация в консоли как работает
@@ -189,7 +201,7 @@ data-setbg="${item.image}">
       //в виде массива из 5 элементов 
       let topAnime = sortViews.splice(0, 5);
       // отправляю в функцию данные
-      renderTopAnime(topAnime)
+      renderTopAnime(topAnime);
 
     });
 
