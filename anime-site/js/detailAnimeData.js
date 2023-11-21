@@ -11,14 +11,54 @@ const detailAnimeData = () => {
     });
 
   };
-  // функция создает 6 секций с заголовками и карточками по жанрам
+  // функция создает страницу аниме из базы 
   const renderAnimeDetail = (arrayAnimes, itemId) => {
+    const animeBlock = document.querySelector('.anime__details__pic');
+    console.log('animeBlock : ', animeBlock);
+    const animeView = document.querySelector('.view');
+    const animeTitle = document.querySelector('.anime__details__title h3');
+    const animeSubtitle = document.querySelector('.anime__details__title span');
+    const animeText = document.querySelector('.anime__details__text p');
+    const animeWidget = document.querySelectorAll('.anime__details__widget ul li');
+    console.log('animeWidget: ', animeWidget);
+
+
+
+    // // поиск аниме из базы
     const animeClick = arrayAnimes.find(anime => {
       // console.log('animefind: ', anime);
       return anime.id === itemId;
     });
 
-    console.log('animeClick : ', animeClick);
+    // создание страницы по данным из базы
+    if (animeClick) {
+      animeBlock.dataset.setbg = animeClick.image;
+      animeView.innerHTML = '';
+      animeView.insertAdjacentHTML('afterbegin', `
+      <i class="fa fa-eye"></i> ${animeClick.views}
+      `);
+      animeTitle.textContent = animeClick.title;
+      animeSubtitle.textContent = animeClick["original-title"];
+      animeText.textContent = animeClick.description;
+      animeWidget[0].insertAdjacentHTML('afterbegin', `
+      <span>Дата выхода:</span> ${animeClick.date}
+      `);
+      animeWidget[1].insertAdjacentHTML('afterbegin', `
+      <span>Рейтинг:</span> ${animeClick.rating}
+      `)
+      animeWidget[2].insertAdjacentHTML('afterbegin', `
+      <span>Жанр:</span> ${animeClick.tags.join(', ')}
+      `)
+
+      document.querySelectorAll('.set-bg').forEach(elem => {
+        elem.style.backgroundImage = `url(${elem.dataset.setbg})`;
+      });
+
+    } else {
+      alert('Аниме отсутствует')
+    };
+
+
   };
 
   // получение данных из базы,это 1-ое действие после вызова $mainData
@@ -51,4 +91,4 @@ const detailAnimeData = () => {
 
 };
 
-detailAnimeData();
+detailAnimeData(); 
