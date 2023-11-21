@@ -20,7 +20,7 @@ const modal = () => {
       if (searchElem) {
         const resultLink = document.createElement('a');
         resultLink.className = 'pt-2';
-        resultLink.setAttribute('href', './anime-details.html');
+        resultLink.setAttribute('href', `./anime-details.html?itemId=${searchElem.id}`);
         resultLink.setAttribute('target', '_blank');
         resultLink.textContent = searchElem.title;
         resultWrap.append(resultLink)
