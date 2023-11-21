@@ -60,7 +60,8 @@ const detailAnimeData = () => {
       // отключаю прелоадер
 
     } else {
-      alert('Аниме отсутствует')
+      // alert('Аниме отсутствует')
+      console.log('Аниме нет');
     };
   };
 
@@ -85,6 +86,11 @@ const detailAnimeData = () => {
       if (idParams) {
         renderAnimeDetail(data.anime, +idParams);
       } else {
+        // отключаю прелоадер
+        setTimeout(() => {
+          preloder.classList.remove('active')
+        }, 500)
+        // отключаю прелоадер
         const text = document.querySelector('.anime__details__content').innerHTML = '<h1 style="color:#fff;text-align:center;font-size:20px;">Аниме не найдено</h1>';
 
       };
