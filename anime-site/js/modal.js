@@ -57,7 +57,7 @@ const modal = () => {
   // поиск данных из формы в базе
   const searchFunc = (searchStr) => {
     fetch('./db.json').then((response) => {
-      return response.json()
+      return response.json();
     })
       .then((data) => {
         const filterData = data.anime.filter(dataItem => {
@@ -66,13 +66,13 @@ const modal = () => {
           // toLowerCase чтобы с регистром работало корректно
           return dataItem.title.toLowerCase().includes(searchStr.toLowerCase()) ||
             dataItem.description.toLowerCase().includes(searchStr.toLowerCase())
-        })
+        });
         // console.log('filterData', filterData);
         // отрезаю 5 штук для ссылок
         const result = filterData.splice(0, 5)
         console.log('result: ', result);
 
-        renderLink(result)
+        renderLink(result);
 
       });
   };
