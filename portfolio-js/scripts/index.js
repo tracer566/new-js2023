@@ -6,6 +6,15 @@ const disabledScroll = () => {
   // console.log(docment.body.offsetWidth);
   // widthScrollBar ширина скроллбара на всех браузерах
   const widthScrollBar = window.innerWidth - document.body.offsetWidth;
+  // documentElement почти то же что и html
+  // console.log(document.documentElement);
+
+  // только для этого проекта,убирает баг цвета на больших экранах
+  document.documentElement.style.cssText = `
+  height:100vh;
+  position:relative
+  `;
+  // только для этого проекта
 
   // фиксит если кнопка далеко,scrollPosition-придуманное свойство
   //window.scrollY показывает число,на сколько проскролил вниз
@@ -24,6 +33,10 @@ const disabledScroll = () => {
   `;
 };
 const enabledScroll = () => {
+  // только для этого проекта
+  document.documentElement.style.cssText = ``
+  // только для этого проекта
+
   const widthScrollBar = window.innerWidth - document.body.offsetWidth;
   // document.body.style.overflow = '';
   document.body.style.cssText = `
@@ -36,7 +49,7 @@ const enabledScroll = () => {
 
 
 
-{//модалка
+{ //модалка
   const modalOverlay = document.querySelector('.page__overlay_modal');
   const modalOpenBtn = document.querySelector('.present__order-btn');
   const modalClose = document.querySelector('.modal__close');
@@ -82,7 +95,7 @@ const enabledScroll = () => {
     };
 
     const closeModal = () => {
-      enabledScroll();
+
       // анимация,перенес classList внутрь,иначе код запустит его до того как opacity станет < 0
       // анимация на setInterval
       // const timer = setInterval(() => {
@@ -102,6 +115,7 @@ const enabledScroll = () => {
           requestAnimationFrame(animationModal)
         } else {
           modal.classList.remove(selectorTrigger);
+          enabledScroll();
         };
       };
       requestAnimationFrame(animationModal);
@@ -144,7 +158,7 @@ const enabledScroll = () => {
   // };
 }
 
-{//бургер
+{ //бургер
   const burger = document.querySelector('.header__contacts-burger');
   // header__contacts_open
   const headerContacts = document.querySelector('.header__contacts');
@@ -170,3 +184,190 @@ const enabledScroll = () => {
 
   handlerBurger(burger, headerContacts, 'header__contacts_open');
 }
+
+{ //галерея работ
+  const portfolioList = document.querySelector('.portfolio__list');
+  const pageOverlay = document.createElement('div');
+  pageOverlay.classList.add('page__overlay')
+
+  portfolioList.addEventListener('click', (e) => {
+    // closest всплывает и возращает нужный элемент
+    // console.log(e.target.closest('.card'));
+    const card = e.target.closest('.card');
+    if (card) {
+      // console.log(e.target.closest('.card'))
+      // console.log(card.dataset);
+      // console.log(card.dataset.fullImage);
+      // console.log(card.dataset.fullImage + '.jpg');
+
+      const cardTitle = card.querySelector('.card__client')
+      const picture = document.createElement('picture');
+      picture.style.cssText = `
+      position:absolute;
+      top:20px;
+      left:50%;
+      transform:translateX(-50%);
+      max-width:800px;
+      width:95%;
+      
+      `;
+
+      picture.innerHTML = `
+      <source srcset="${card.dataset.fullImage}.avif" type="image/avif">
+      <source srcset="${card.dataset.fullImage}.webp" type="image/webp">
+      <img src="${card.dataset.fullImage}.jpg" alt="${cardTitle.textContent}">
+        `;
+
+
+      pageOverlay.append(picture);
+
+      /* сложнее */
+      // const picture = document.createElement('picture');
+      // picture.style.cssText = `
+      // position:absolute;
+      // top:20px;
+      // left:50%;
+      // transform:translateX(-50%);
+      // max-width:800px;
+      // width:95%;
+
+      // `;
+      // const source = document.createElement('source');
+      // const source2 = document.createElement('source');
+      // const img = document.createElement('img');
+      // source.type = "image/avif";
+      // source.srcset = card.dataset.fullImage + '.avif';
+      // source2.type = "image/webp";
+      // source2.srcset = card.dataset.fullImage + '.webp';
+      // img.src = card.dataset.fullImage + '.jpg';
+
+      // picture.prepend(source, source2, img);
+      // pageOverlay.append(picture);
+
+
+      /*простой вариант*/
+      // const img = document.createElement('img');
+      // img.src = card.dataset.fullImage + '.jpg';
+      // img.style.cssText = `
+      // position:absolute;
+      // top:20px;
+      // left:50%;
+      // transform:translateX(-50%);
+      // max-width:580px;
+      // width:100%;
+      // `;
+      // pageOverlay.append(img);
+
+      document.body.append(pageOverlay);
+      disabledScroll();
+    };
+  });
+
+  pageOverlay.addEventListener('click', (e) => {
+    pageOverlay.remove();
+    pageOverlay.textContent = '';
+    enabledScroll();
+
+  });
+
+}
+
+{ //рендер карточек
+
+  const btnAddCard = document.querySelector('.portfolio__add');
+  const portfolioList = document.querySelector('.portfolio__list');
+  const COUNT_CARD = 2;
+
+  const getData = () => {
+    // GET запрос,можно return с fetch убрать но тогда следующий then нужен
+    return fetch('db.json')
+      .then(responce => {
+        // console.log('responce: ', responce);
+        if (responce.ok === true) {
+          return responce.json();
+        } else {
+          // throw 'Данные из базы не получены.' + 'Статус ошибки: ' + responce.status;
+          throw `Данные из базы не получены.Статус ошибки: ${responce.status}`;
+        }
+      })
+      // .then(data => {
+      //   return data;
+      // })
+      .catch(error => console.error('from catch error:', error));
+  };
+
+  // создание хранилища для записи данных из getData(),без async будет promise
+  const createStore = async () => {
+    const data = await getData();//массив с данными или promise без await
+    console.log('from createStore data: ', data);
+    return {
+      data,
+      counter: 0,
+      count: COUNT_CARD,
+      get length() {
+        return this.data.length;
+      },
+      get cardData() {
+        // slice(0, 0+2),count:COUNT_CARD == 2,изменяю только counter
+        const renderData = this.data.slice(this.counter, this.counter + this.count);
+        // this.counter += this.count;
+        this.counter += renderData.length;
+        return renderData;
+      }
+    };
+  };
+
+  const renderCard = data => {
+    const cards = data.map((item) => {
+      const { image, preview, client, year, type } = item
+
+      const li = document.createElement('li');
+      li.classList.add('portfolio__item');
+      li.innerHTML = `
+      <article class="card" tabindex="0" role="button" aria-label="открыть макет" data-full-image="${image}">
+        <picture class="card__picture">
+        <source srcset="${preview}.avif" type="image/avif">
+        <source srcset="${preview}.webp" type="image/webp">
+        <img src="${preview}.jpg" alt="${client}" width="166" height="103">
+        </picture>
+
+        <p class="card__data">
+        <span class="card__client">Клиент: ${client}</span>
+        <time class="card__date" datetime="${year}">год: ${year}</time>
+        </p>
+
+        <h3 class="card__title">${type}</h3>
+        </article>
+      `;
+      return li;
+    });
+
+    portfolioList.append(...cards);
+
+
+  };
+
+  // инициализация карточек
+  const initPortfolio = async () => {
+    const store = await createStore();
+    // отрисует первые две карточки
+    renderCard(store.cardData);
+    btnAddCard.addEventListener('click', () => {
+      // console.log(store.cardData);
+      // console.log(store.counter, store.length);
+      renderCard(store.cardData);
+      if (store.length === store.counter) {
+        btnAddCard.remove();
+      }
+    });
+
+  };
+
+  initPortfolio();
+
+};
+
+
+
+
+
